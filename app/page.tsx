@@ -1,5 +1,10 @@
+"use client"
 import { Manrope, Berkshire_Swash } from "next/font/google";
 import { TextAlignJustify, ArrowRight } from "lucide-react";
+import Hero from "@/app/_components/hero"
+import StatsCounter from "@/app/_components/stat-counter"
+import TrustedBrands from "./_components/trusted-brands";
+import EnterpriseEnablement from "./_components/EnterpriseEnablement";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -18,14 +23,21 @@ const felipaWeight = Berkshire_Swash({
 
 export default function Home() {
   return (
-    <div className={`${manrope.className} min-h-screen bg-black`}>
+   <main className="w-full h-full">
+     <Hero />
+     <TrustedBrands />
+     <StatsCounter />
+     <EnterpriseEnablement />
+   </main>
+  );
+}
 
-      {/* =====================================================
-          HERO
-      ====================================================== */}
-      <main className="relative h-screen w-full overflow-hidden px-4 text-white">
 
-        {/* Video Background */}
+
+{/*
+   
+     <main className="relative h-screen w-full overflow-hidden px-4 text-white">
+
         <video
           src="/videos/HeroBG.mp4"
           autoPlay
@@ -35,199 +47,15 @@ export default function Home() {
           className="absolute inset-0 z-0 h-full w-full object-cover"
         />
 
-        {/* Dark Overlay */}
+  
         <div className="absolute inset-0 z-1 bg-black/40" />
 
-        {/* =====================================================
-            NAVBAR
-        ====================================================== */}
+   
         <div className="fixed left-1/2 top-5 z-50 h-10 w-full -translate-x-1/2 px-6">
 
-          <nav
-            className="
-              mx-auto
-              flex
-              h-full
-              max-w-[1450px]
-              items-center
-              justify-between
-              rounded-full
-              border-l-2
-              border-r-2
-              border-blue-500
-              bg-black/20
-              px-6
-              py-8
-              backdrop-blur-sm
-              md:justify-evenly
-            "
-          >
-
-            {/* Logo */}
-            <h1 className="whitespace-nowrap text-lg md:text-xl">
-              <span className="text-[#1054E8]">More</span>
-              Learning
-            </h1>
-
-            {/* Desktop Navigation */}
-            <ul className="hidden items-center gap-1 lg:gap-6 md:flex">
-
-              <li>
-                <a
-                  href="#"
-                  className="
-                    inline-block
-                    rounded-full
-                    border-l-2
-                    border-r-2
-                    border-transparent
-                    px-2
-                    py-0.5
-                    text-[clamp(0.9rem,0.9vw,3rem)]
-                    text-white
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:border-blue-500
-                    hover:text-blue-500
-                  "
-                >
-                  Home
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  className="
-                    inline-block
-                    rounded-full
-                    border-l-2
-                    border-r-2
-                    border-transparent
-                    px-2
-                    py-0.5
-                    text-[clamp(0.9rem,0.9vw,3rem)]
-                    text-white
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:border-blue-500
-                    hover:text-blue-500
-                  "
-                >
-                  About
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  className="
-                    inline-block
-                    rounded-full
-                    border-l-2
-                    border-r-2
-                    border-transparent
-                    px-2
-                    py-0.5
-                    text-[clamp(0.9rem,0.9vw,3rem)]
-                    text-white
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:border-blue-500
-                    hover:text-blue-500
-                  "
-                >
-                  Our Work
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  className="
-                    inline-block
-                    rounded-full
-                    border-l-2
-                    border-r-2
-                    border-transparent
-                    px-2
-                    py-0.5
-                    text-[clamp(0.9rem,0.9vw,3rem)]
-                    text-white
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:border-blue-500
-                    hover:text-blue-500
-                  "
-                >
-                  Services
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  className="
-                    inline-block
-                    rounded-full
-                    border-l-2
-                    border-r-2
-                    border-transparent
-                    px-2
-                    py-0.5
-                    text-[clamp(0.9rem,0.9vw,3rem)]
-                    text-white
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:border-blue-500
-                    hover:text-blue-500
-                  "
-                >
-                  Contact
-                </a>
-              </li>
-
-            </ul>
-
-            {/* Connect Button */}
-            <a
-              href="#"
-              className="
-                hidden
-                rounded-full
-                bg-blue-500
-                px-4
-                py-2
-                text-[clamp(0.9rem,0.9vw,3rem)]
-                transition-colors
-                duration-300
-                hover:bg-blue-400
-                md:block
-              "
-            >
-              Connect Now
-            </a>
-
-            {/* Mobile Menu */}
-            <button
-              type="button"
-              className="block md:hidden"
-              aria-label="Open menu"
-            >
-              <TextAlignJustify size={25} />
-            </button>
-
-          </nav>
         </div>
 
-        {/* =====================================================
-            HERO CONTENT
-        ====================================================== */}
+  
         <div
           className="
             relative
@@ -241,7 +69,6 @@ export default function Home() {
           "
         >
 
-          {/* Heading */}
           <h1
             className={`
               ${manropeWeight.className}
@@ -279,7 +106,6 @@ export default function Home() {
             Remember & Act On.
           </h1>
 
-          {/* Description */}
           <p
             className="
               mx-auto
@@ -304,9 +130,6 @@ export default function Home() {
             videos, 3D and immersive technologies.
           </p>
 
-          {/* =====================================================
-              BUTTONS
-          ====================================================== */}
           <div
             className="
               relative
@@ -322,9 +145,7 @@ export default function Home() {
             "
           >
 
-            {/* -------------------------------------------------
-                BUTTON 1
-            -------------------------------------------------- */}
+        
             <a
               href="#"
               className="
@@ -351,24 +172,10 @@ export default function Home() {
             </a>
 
 
-            {/* -------------------------------------------------
-                BUTTON 2
-            -------------------------------------------------- */}
      <div className="relative z-[1] w-fit group">
 
-  {/* TOP LEFT */}
-  <span className="absolute -left-1 -top-1 z-0 h-4 w-4 border-l-1 border-t-1 group-hover:w-6 group-hover:h-6  group-hover:-left-2 group-hover:-top-2 transition-all duration-300" />
-
-  {/* TOP RIGHT */}
-  <span className="absolute -right-1 -top-1 z-0 h-4 w-4 border-r-1 border-t-1 group-hover:w-6 group-hover:h-6  group-hover:-right-2 group-hover:-top-2 transition-all duration-300" />
-
-  {/* BOTTOM LEFT */}
-  <span className="absolute -bottom-1 -left-1 z-0 h-4 w-4 border-l-1 border-b-1 group-hover:w-6 group-hover:h-6  group-hover:-left-2 group-hover:-bottom-2 transition-all duration-300" />
-
-  {/* BOTTOM RIGHT */}
-  <span className="absolute -bottom-1 -right-1 z-0 h-4 w-4 border-r-1 border-b-1 group-hover:w-6 group-hover:h-6  group-hover:-right-2 group-hover:-bottom-2 transition-all duration-300" />
-
-  {/* BLACK BUTTON */}
+ 
+  
   <a
     href="#"
     className="
@@ -399,9 +206,6 @@ export default function Home() {
       </main>
 
 
-      {/* =====================================================
-          OTHER CONTENT
-      ====================================================== */}
       <section className="min-h-[200vh] bg-black px-6 py-20 text-white">
 
         <div className="mx-auto max-w-[1450px]">
@@ -466,7 +270,5 @@ export default function Home() {
         </div>
 
       </section>
-
-    </div>
-  );
-}
+  
+*/}

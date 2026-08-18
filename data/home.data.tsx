@@ -128,7 +128,7 @@ export const statsCounter = [
     title: "Enterprise Project Delivered",
   },
   {
-    stat: new Date().getFullYear() - new Date("2012").getFullYear(),
+    stat: (new Date().getFullYear() - new Date("2012").getFullYear()) - 1,
     title: "Years of Expertise",
   },
   {
