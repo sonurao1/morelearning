@@ -6,6 +6,12 @@ import { MonitorPlay } from "lucide-react"
 import { Handshake } from "lucide-react"
 import { RectangleGoggles } from "lucide-react"
 
+//Importing Images - Capabilities
+import capability1 from "@/public/images/capability1.avif"
+import capability2 from "@/public/images/capability2.avif"
+import capability3 from "@/public/images/capability3.avif"
+import capability4 from "@/public/images/capability4.avif"
+
 
 import Pg from "@/assets/images/client-logos/pg.png";
 import Bsnl from "@/assets/images/client-logos/bsnl.png";
@@ -247,7 +253,8 @@ export const capabilities= [
         icon: (
                 <GraduationCap />
         ),
-         tags:["Interactive eLearning", "Onboarding", "Compliance Training"]
+         tags:["Interactive eLearning", "Onboarding", "Compliance Training"],
+         image: capability1
 
     },
     {
@@ -256,7 +263,8 @@ export const capabilities= [
         icon: (
                 <Handshake />
         ),
-         tags:["Sales Presentations", "Ineractive Product Demos", "Dealer Training"]
+         tags:["Sales Presentations", "Ineractive Product Demos", "Dealer Training"],
+         image: capability2
 
     },
     {
@@ -265,7 +273,8 @@ export const capabilities= [
         icon: (
                 <MonitorPlay />
         ),
-         tags:["Motion Graphics", "Explainer Videos", "Executive Communication"]
+         tags:["Motion Graphics", "Explainer Videos", "Executive Communication"],
+         image: capability3
 
     },
     {
@@ -274,7 +283,8 @@ export const capabilities= [
         icon: (
                 <RectangleGoggles />
         ),
-         tags:["3D Visualization", "Digital Twins", "VR / AR Experiences"]
+         tags:["3D Visualization", "Digital Twins", "VR / AR Experiences"],
+         image: capability4
 
     },
 ]

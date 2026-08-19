@@ -42,7 +42,7 @@ export default function EnterpriseEnablement() {
           trigger: littleNotesRef.current,
           start: "top bottom",
         //   end: "bottom bottom",
-          markers:true,
+          // markers:true,
         },
        } 
     )

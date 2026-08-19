@@ -20,6 +20,14 @@ export interface CapabilityArea {
   image: string;
 }
 
+export interface ServiceCategory {
+  heading: string;
+  subHeading: string;
+  icon: React.ReactNode;
+  tags: string[];
+  image:HTMLImageElement;
+};
+
 export interface DifferentiatorPoint {
   label: string;
 }

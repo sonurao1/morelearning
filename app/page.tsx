@@ -5,6 +5,9 @@ import Hero from "@/app/_components/hero"
 import StatsCounter from "@/app/_components/stat-counter"
 import TrustedBrands from "./_components/trusted-brands";
 import EnterpriseEnablement from "./_components/EnterpriseEnablement";
+import Capabilities from "./_components/Capabilities";
+import IntegratedTeamSection from "./_components/IntegratedTeamSection";
+import EnterpriseStrategy from "./_components/EnterpriseStragegy";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -28,6 +31,9 @@ export default function Home() {
      <TrustedBrands />
      <StatsCounter />
      <EnterpriseEnablement />
+     <Capabilities />
+     <IntegratedTeamSection />
+     <EnterpriseStrategy />
    </main>
   );
 }

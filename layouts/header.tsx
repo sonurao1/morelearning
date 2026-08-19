@@ -89,7 +89,7 @@ const lineRef = useRef<HTMLDivElement>(null);
                          className="shrink-0 translate-y-0.5 transition-transform motion-reduce:transition-none group-focus-within:rotate-180 group-hover:rotate-180"
                         />
                      </Link>
-                     <div className="absolute top-full left-1/4 -translate-x-1/4 p-2 pointer-events-none opacity-0 scale-95 origin-top transition-all duration-200 motion-reduce:transition-none group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:scale-100 group-hover:pointer-events-auto group-hover:opacity-100 group-hover:scale-100" >
+                     <div className="absolute top-full left-1/4 -translate-x-1/4 p-2 pointer-events-none opacity-0 scale-95 origin-top transition-all duration-200 motion-reduce:transition-none group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:scale-100 group-hover:pointer-events-auto group-hover:opacity-100 group-hover:scale-100 backdrop-blur-lg" >
                        <ul className="nav-dropdown w-200 p-6 relative grid grid-cols-3 gap-6 text-left  backdrop-blur-lg  border border-white/10 rounded-xl shadow-2xl shadow-black/40 text-[14px]" >
                         {
                             items.map(({url, text}, idx) => {
