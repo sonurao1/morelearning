@@ -8,6 +8,8 @@ import EnterpriseEnablement from "./_components/EnterpriseEnablement";
 import Capabilities from "./_components/Capabilities";
 import IntegratedTeamSection from "./_components/IntegratedTeamSection";
 import EnterpriseStrategy from "./_components/EnterpriseStragegy";
+import IndustriesServed from "./_components/IndustriesServed";
+import CaseStudy from "./_components/CaseStudy";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -34,6 +36,8 @@ export default function Home() {
      <Capabilities />
      <IntegratedTeamSection />
      <EnterpriseStrategy />
+     <IndustriesServed />
+     <CaseStudy />
    </main>
   );
 }

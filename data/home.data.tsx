@@ -1,16 +1,33 @@
 import type { CaseStudy } from "../types/content";
 
 //Importing Icons - Capabilities
-import { GraduationCap } from "lucide-react"
-import { MonitorPlay } from "lucide-react"
-import { Handshake } from "lucide-react"
-import { RectangleGoggles } from "lucide-react"
+import { 
+  GraduationCap, // icon using in two section Capabilities & Industries Served
+  MonitorPlay,
+  Handshake,
+  RectangleGoggles
+} from "lucide-react"
+
 
 //Importing Images - Capabilities
 import capability1 from "@/public/images/capability1.avif"
 import capability2 from "@/public/images/capability2.avif"
 import capability3 from "@/public/images/capability3.avif"
 import capability4 from "@/public/images/capability4.avif"
+
+//Importing Icons - Industries Served
+import { 
+  Landmark,
+  Factory,
+  HeartPulse,
+  Cpu,
+  ShoppingCart,
+  Building2,
+  Zap,
+ } from "lucide-react"
+
+ //Importing Images - Industries Served
+
 
 
 import Pg from "@/assets/images/client-logos/pg.png";
@@ -287,4 +304,79 @@ export const capabilities= [
          image: capability4
 
     },
+]
+
+export const industriesServed = [                           
+  {
+    heading: "Banking, Financial Services & Insurance",
+    subHeading: "Compliance-heavy, high-stakes learning at scale.",
+    icon: (
+        <Landmark className="w-full h-full transition-all duration-300  p-2 text-primary-action rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-actiofull h-full transition-all duration-300"/>  
+    ),
+    image: "/images/banking-service.avif"
+
+  },
+  {
+    heading: "Manufacturing & Logistics",
+    subHeading: "Safety, process and technical skilling on the floor.",
+    icon: (
+        <Factory className="w-full h-full transition-all duration-300 p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
+    ),
+    image: "/images/manufacture-service.avif"
+
+  },
+  {
+    heading: "Pharma & Healthcare",
+    subHeading: "Regulated, accuracy-critical knowledge transfer.",
+    icon: (
+        <HeartPulse className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
+    ),
+    image: "/images/pharma-service.avif"
+
+  },
+  {
+    heading: "Technology & Telecom",
+    subHeading: "Fast-cycle product and platform enablement.",
+    icon: (
+        <Cpu className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
+    ),
+    image: "/images/technology-service.avif"
+
+  },
+  {
+    heading: "Retail & Consumer Goods",
+    subHeading: "Frontline, dealer and customer-facing enablement.",
+    icon: (
+        <ShoppingCart className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
+    ),
+    image: "/images/retail-service.avif"
+
+  },
+  {
+    heading: "Government & Public Sector",
+    subHeading: "Large-scale, accessible workforce programs.",
+    icon: (
+        <Building2 className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
+    ),
+    image: "/images/goverment-service.avif"
+
+  },
+  {
+    heading: "Energy & Utilities",
+    subHeading: "Field, safety and technical certification training.",
+    icon: (
+        <Zap className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
+    ),
+    image: "/images/energy-service.avif"
+
+  },
+  {
+    heading: "Education & Professional Services",
+    subHeading: "Structured, outcome-driven learning journeys.",
+    icon: (
+        <GraduationCap className=" w-full h-full transition-all duration-300 t p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action " />  
+    ),
+    image: "/images/education-service.avif"
+
+  }
 ]

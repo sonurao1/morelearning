@@ -77,3 +77,37 @@ export interface Testimonial {
   company: string;
   initials: string;
 }
+
+//industries served
+export interface IndusriesServiceType {
+  heading: string,
+  subHeading: string,
+  icon: React.ReactNode,
+  image: string
+}
+
+
+//sample case study
+//sample data
+
+//  {
+//     id: "cs-01",
+//     title: "Global Onboarding Reimagined for a Banking Leader",
+//     client: "Global Banking Leader",
+//     category: "Learning & Workforce Enablement",
+//     summary:
+//       "A modular onboarding ecosystem covering compliance, product and systems training for a multi-region workforce.",
+//     image: "https://images.unsplash.com/photo-1758873269035-aae0e1fd3422?q=80&w=1400&auto=format&fit=crop",
+//     results: ["40% faster ramp-up", "Multi-region rollout", "Microlearning + assessments"],
+//   },
+
+export interface caseStudyTypes {
+  id:string,
+  title: string,
+  client: string,
+  category: string,
+  summary: string,
+  image: string,
+  results: string[]
+
+}
