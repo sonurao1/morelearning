@@ -61,7 +61,7 @@ export type CaseStudyCategory =
   | "Immersive & Interactive Experiences";
 
 export interface CaseStudy {
-  id: string;
+  id?: string;
   title: string;
   client: string;
   category: CaseStudyCategory;
