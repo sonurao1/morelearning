@@ -5,6 +5,7 @@ import "./globals.css";
 
 // Layout components
 import Header from "@/layouts/header";
+import Footer from "@/layouts/footer"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col font-jakarta text-dark-primary">
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

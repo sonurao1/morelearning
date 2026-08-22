@@ -111,3 +111,26 @@ export interface caseStudyTypes {
   results: string[]
 
 }
+
+
+// Sample testimonial 
+
+// {
+//     quote:
+//       "MoreLearning brought every discipline we needed — strategy, design, development — under one roof. That alone cut months off our rollout.",
+//     name: "Chief Learning Officer",
+//     role: "Chief Learning Officer",
+//     company: "Global Financial Services Enterprise",
+//     initials: "CL",
+//   },
+
+
+export interface TestimonialTypes {
+  quote: string,
+  name: string,
+  role: string,
+  company: string,
+  initials: string,
+  image:StaticImageData,
+  stars:number
+}

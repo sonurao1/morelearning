@@ -26,7 +26,15 @@ import {
   Zap,
  } from "lucide-react"
 
- //Importing Images - Industries Served
+ //Importing Images - Testimonials
+ import Avatar1 from "@/public/images/Testimonial-Avatar1.avif"
+ import Avatar2 from "@/public/images/Testimonial-Avatar2.avif"
+ import Avatar3 from "@/public/images/Testimonial-Avatar3.avif"
+ import Avatar4 from "@/public/images/Testimonial-Avatar4.avif"
+ import Avatar5 from "@/public/images/Testimonial-Avatar5.avif"
+
+ //Importing Types - TestimonialTypes
+ import { TestimonialTypes } from "../types/content";
 
 
 
@@ -380,3 +388,56 @@ export const industriesServed = [
 
   }
 ]
+
+export const TESTIMONIALS: TestimonialTypes[] = [
+  {
+    quote:
+      "MoreLearning brought every discipline we needed — strategy, design, development — under one roof. That alone cut months off our rollout.",
+    name: "Chief Learning Officer",
+    role: "Chief Learning Officer",
+    company: "Global Financial Services Enterprise",
+    initials: "CL",
+    image: Avatar1,
+    stars: 5
+  },
+  {
+    quote:
+      "The immersive training experience they built made a genuinely complex process easy for our field teams to understand and retain.",
+    name: "Head of L&D",
+    role: "Head of Learning & Development",
+    company: "Leading Pharmaceutical Manufacturer",
+    initials: "HL",
+    image: Avatar2,
+    stars: 5
+  },
+  {
+    quote:
+      "They operate like an extension of our team, not a vendor. Our sales enablement content has never been more consistent.",
+    name: "VP, Sales Enablement",
+    role: "VP, Sales Enablement",
+    company: "Enterprise Technology Company",
+    initials: "VP",
+    image: Avatar3,
+    stars: 5
+  },
+  {
+    quote:
+      "The immersive training experience they built made a genuinely complex process easy for our field teams to understand and retain.",
+    name: "Head of L&D",
+    role: "Head of Learning & Development",
+    company: "Leading Pharmaceutical Manufacturer",
+    initials: "HL",
+    image: Avatar4,
+    stars: 5
+  },
+   {
+    quote:
+      "MoreLearning brought every discipline we needed — strategy, design, development — under one roof. That alone cut months off our rollout.",
+    name: "Chief Learning Officer",
+    role: "Chief Learning Officer",
+    company: "Global Financial Services Enterprise",
+    initials: "CL",
+    image: Avatar5,
+    stars: 5
+  },
+];
