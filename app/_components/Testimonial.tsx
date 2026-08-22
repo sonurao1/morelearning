@@ -263,7 +263,7 @@ export default function Testimonial() {
                   {/* Avatar */}
                   <div className="relative h-14 w-14 overflow-hidden rounded-full ring-2 ring-digital/15">
                     <Image
-                      src="/images/Testimonial-Avatar1.avif"
+                      src="/images/Testimonial-Avatar1.jpg"
                       alt={testimonial.name}
                       sizes="56px"
                       fill

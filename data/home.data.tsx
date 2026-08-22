@@ -10,10 +10,10 @@ import {
 
 
 //Importing Images - Capabilities
-import capability1 from "@/public/images/capability1.avif"
-import capability2 from "@/public/images/capability2.avif"
-import capability3 from "@/public/images/capability3.avif"
-import capability4 from "@/public/images/capability4.avif"
+import capability1 from "@/public/images/capability1.jpg"
+import capability2 from "@/public/images/capability2.jpg"
+import capability3 from "@/public/images/capability3.jpg"
+import capability4 from "@/public/images/capability4.jpg"
 
 //Importing Icons - Industries Served
 import { 
@@ -27,11 +27,11 @@ import {
  } from "lucide-react"
 
  //Importing Images - Testimonials
- import Avatar1 from "@/public/images/Testimonial-Avatar1.avif"
- import Avatar2 from "@/public/images/Testimonial-Avatar2.avif"
- import Avatar3 from "@/public/images/Testimonial-Avatar3.avif"
- import Avatar4 from "@/public/images/Testimonial-Avatar4.avif"
- import Avatar5 from "@/public/images/Testimonial-Avatar5.avif"
+ import Avatar1 from "@/public/images/Testimonial-Avatar1.jpg"
+ import Avatar2 from "@/public/images/Testimonial-Avatar2.jpg"
+ import Avatar3 from "@/public/images/Testimonial-Avatar3.jpg"
+ import Avatar4 from "@/public/images/Testimonial-Avatar4.jpg"
+ import Avatar5 from "@/public/images/Testimonial-Avatar5.jpg"
 
  //Importing Types - TestimonialTypes
  import { TestimonialTypes } from "../types/content";
@@ -321,7 +321,7 @@ export const industriesServed = [
     icon: (
         <Landmark className="w-full h-full transition-all duration-300  p-2 text-primary-action rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-actiofull h-full transition-all duration-300"/>  
     ),
-    image: "/images/banking-service.avif"
+    image: "/images/banking-service.jpg"
 
   },
   {
@@ -330,7 +330,7 @@ export const industriesServed = [
     icon: (
         <Factory className="w-full h-full transition-all duration-300 p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
     ),
-    image: "/images/manufacture-service.avif"
+    image: "/images/manufacture-service.jpg"
 
   },
   {
@@ -339,7 +339,7 @@ export const industriesServed = [
     icon: (
         <HeartPulse className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
     ),
-    image: "/images/pharma-service.avif"
+    image: "/images/pharma-service.jpg"
 
   },
   {
@@ -348,7 +348,7 @@ export const industriesServed = [
     icon: (
         <Cpu className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
     ),
-    image: "/images/technology-service.avif"
+    image: "/images/technology-service.jpg"
 
   },
   {
@@ -357,7 +357,7 @@ export const industriesServed = [
     icon: (
         <ShoppingCart className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
     ),
-    image: "/images/retail-service.avif"
+    image: "/images/retail-service.jpg"
 
   },
   {
@@ -366,7 +366,7 @@ export const industriesServed = [
     icon: (
         <Building2 className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
     ),
-    image: "/images/goverment-service.avif"
+    image: "/images/goverment-service.jpg"
 
   },
   {
@@ -375,7 +375,7 @@ export const industriesServed = [
     icon: (
         <Zap className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
     ),
-    image: "/images/energy-service.avif"
+    image: "/images/energy-service.jpg"
 
   },
   {
@@ -384,7 +384,7 @@ export const industriesServed = [
     icon: (
         <GraduationCap className=" w-full h-full transition-all duration-300 t p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action " />  
     ),
-    image: "/images/education-service.avif"
+    image: "/images/education-service.jpg"
 
   }
 ]

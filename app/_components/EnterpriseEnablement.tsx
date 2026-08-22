@@ -68,7 +68,7 @@ export default function EnterpriseEnablement() {
             className="absolute -top-[100px] -bottom-[0px] md:-top-[100px] md:-bottom-[140px] left-0 right-0 will-change-transform"
           >
             <Image
-              src="/images/EnterpriseEnablement.avif"
+              src="/images/EnterpriseEnablement.jpg"
               fill
               alt="Enterprise enablement"
               className="object-cover object-center"

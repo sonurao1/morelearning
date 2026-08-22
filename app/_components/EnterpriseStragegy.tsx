@@ -18,7 +18,7 @@ export default function EnterpriseStrategy() {
       {/* Background image + legibility scrim */}
       <div className="absolute inset-0">
         <Image
-          src="/images/EnterpriseStrategyBG.avif"
+          src="/images/EnterpriseStrategyBG.jpg"
           alt="Enterprise Strategy"
           fill
           priority
