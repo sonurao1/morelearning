@@ -1,7 +1,7 @@
-import Image from "next/image"
+import Image from "next/image";
 
 // data
-import { caseStudyTypes } from "@/data/home.data"
+import { caseStudyTypes } from "@/types/content";
 
 export default function CaseStudyBox({
   title,
@@ -57,5 +57,5 @@ export default function CaseStudyBox({
         )}
       </div>
     </div>
-  )
+  );
 }

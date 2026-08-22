@@ -1,9 +1,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // Shared content types
-// Centralising these keeps every data file and section component in sync —
-// change a shape here once and TypeScript will flag every place that needs
-// updating.
 // ─────────────────────────────────────────────────────────────────────────
+
+import type { ReactNode } from "react";
+import type { StaticImageData } from "next/image";
 
 export interface NavLink {
   label: string;
@@ -12,21 +12,21 @@ export interface NavLink {
 
 export interface CapabilityArea {
   id: string;
-  index: string; // "01" style reference used as a visual marker, not a strict sequence
+  index: string;
   title: string;
   description: string;
   keywords: string[];
-  icon: string; // lucide-react icon name, resolved by <CapabilityIconMap>
-  image: string;
+  icon: string;
+  image: string | StaticImageData;
 }
 
 export interface ServiceCategory {
   heading: string;
   subHeading: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   tags: string[];
-  image:HTMLImageElement;
-};
+  image: string | StaticImageData;
+}
 
 export interface DifferentiatorPoint {
   label: string;
@@ -47,7 +47,7 @@ export interface IndustryItem {
   name: string;
   description: string;
   icon: string;
-  image: string;
+  image: string | StaticImageData;
 }
 
 export interface ClientLogo {
@@ -66,7 +66,7 @@ export interface CaseStudy {
   client: string;
   category: CaseStudyCategory;
   summary: string;
-  image: string;
+  image: string | StaticImageData;
   results: string[];
 }
 
@@ -78,59 +78,37 @@ export interface Testimonial {
   initials: string;
 }
 
-//industries served
 export interface IndusriesServiceType {
-  heading: string,
-  subHeading: string,
-  icon: React.ReactNode,
-  image: string
+  heading: string;
+  subHeading: string;
+  icon: ReactNode;
+  image: string | StaticImageData;
 }
 
-
-//sample case study
-//sample data
-
-//  {
-//     id: "cs-01",
-//     title: "Global Onboarding Reimagined for a Banking Leader",
-//     client: "Global Banking Leader",
-//     category: "Learning & Workforce Enablement",
-//     summary:
-//       "A modular onboarding ecosystem covering compliance, product and systems training for a multi-region workforce.",
-//     image: "https://images.unsplash.com/photo-1758873269035-aae0e1fd3422?q=80&w=1400&auto=format&fit=crop",
-//     results: ["40% faster ramp-up", "Multi-region rollout", "Microlearning + assessments"],
-//   },
+// ─────────────────────────────────────────────────────────────────────────
+// Case Study
+// ─────────────────────────────────────────────────────────────────────────
 
 export interface caseStudyTypes {
-  id:string,
-  title: string,
-  client: string,
-  category: string,
-  summary: string,
-  image: string,
-  results: string[]
-
+  id: string;
+  title: string;
+  client: string;
+  category: string;
+  summary: string;
+  image: string | StaticImageData;
+  results: string[];
 }
 
-
-// Sample testimonial 
-
-// {
-//     quote:
-//       "MoreLearning brought every discipline we needed — strategy, design, development — under one roof. That alone cut months off our rollout.",
-//     name: "Chief Learning Officer",
-//     role: "Chief Learning Officer",
-//     company: "Global Financial Services Enterprise",
-//     initials: "CL",
-//   },
-
+// ─────────────────────────────────────────────────────────────────────────
+// Testimonial
+// ─────────────────────────────────────────────────────────────────────────
 
 export interface TestimonialTypes {
-  quote: string,
-  name: string,
-  role: string,
-  company: string,
-  initials: string,
-  image:StaticImageData,
-  stars:number
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+  initials: string;
+  image: StaticImageData;
+  stars: number;
 }
