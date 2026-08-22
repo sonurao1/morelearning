@@ -1,7 +1,6 @@
 import Image from "next/image";
 
-// data
-import { caseStudyTypes } from "@/types/content";
+import type { CaseStudy } from "@/types/content";
 
 export default function CaseStudyBox({
   title,
@@ -10,10 +9,9 @@ export default function CaseStudyBox({
   summary,
   image,
   results,
-}: caseStudyTypes) {
+}: CaseStudy) {
   return (
     <div className="overflow-hidden rounded-2xl border border-secondary-text/20 bg-white">
-      
       {/* Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden">
         <Image

@@ -54,6 +54,10 @@ export interface ClientLogo {
   name: string;
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// Case Study
+// ─────────────────────────────────────────────────────────────────────────
+
 export type CaseStudyCategory =
   | "Learning & Workforce Enablement"
   | "Sales & Customer Enablement"
@@ -68,7 +72,7 @@ export interface CaseStudy {
   summary: string;
   image: string | StaticImageData;
   results: string[];
-}
+};
 
 export interface Testimonial {
   quote: string;
@@ -83,20 +87,6 @@ export interface IndusriesServiceType {
   subHeading: string;
   icon: ReactNode;
   image: string | StaticImageData;
-}
-
-// ─────────────────────────────────────────────────────────────────────────
-// Case Study
-// ─────────────────────────────────────────────────────────────────────────
-
-export interface caseStudyTypes {
-  id: string;
-  title: string;
-  client: string;
-  category: string;
-  summary: string;
-  image: string | StaticImageData;
-  results: string[];
 }
 
 // ─────────────────────────────────────────────────────────────────────────

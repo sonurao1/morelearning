@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { CASE_STUDY_CATEGORIES, CASE_STUDIES } from "@/data/home.data";
-import { caseStudyTypes } from "@/types/content";
+import type { CaseStudy } from "@/types/content";
 import CaseStudyBox from "@/components/Case-Study-box";
 
 export default function CaseStudy() {
@@ -14,13 +14,13 @@ export default function CaseStudy() {
     }
 
     return CASE_STUDIES.filter(
-      (study: caseStudyTypes) => study.category === activeCategory
+      (study: CaseStudy) => study.category === activeCategory
     );
   }, [activeCategory]);
 
   return (
     <section className="w-full bg-white py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto container ">
+      <div className="container mx-auto">
         {/* Header */}
         <div className="mb-10 flex w-full flex-col gap-5 lg:mb-14">
           {/* Eyebrow */}
@@ -77,33 +77,14 @@ export default function CaseStudy() {
         {/* Case Studies */}
         {filteredCaseStudies.length > 0 ? (
           <ul className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredCaseStudies.map(
-              (
-                {
-                  title,
-                  client,
-                  category,
-                  summary,
-                  image,
-                  results,
-                }: caseStudyTypes,
-                index: number
-              ) => (
-                <li
-                  key={`${title}-${category}-${index}`}
-                  className="h-full"
-                >
-                  <CaseStudyBox
-                    title={title}
-                    client={client}
-                    category={category}
-                    summary={summary}
-                    image={image}
-                    results={results}
-                  />
-                </li>
-              )
-            )}
+            {filteredCaseStudies.map((study: CaseStudy, index: number) => (
+              <li
+                key={`${study.title}-${study.category}-${index}`}
+                className="h-full"
+              >
+                <CaseStudyBox {...study} />
+              </li>
+            ))}
           </ul>
         ) : (
           /* Empty State */
