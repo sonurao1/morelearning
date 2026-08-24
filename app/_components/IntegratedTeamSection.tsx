@@ -38,13 +38,13 @@ export default function IntegratedTeamSection(){
          </div>
 
          {/* Content 3 */}
-         <div className=" p-6 flex flex-col gap-6 items-center justify-center">
-            <h1 className="text-center text-secondary-text/50 w-[60%]">This integrated approach enables faster execution, stronger brand consistency, reduced project complexity, and significantly better learner engagement.</h1>
-            <ul className="flex flex-wrap gap-4 justify-center items-center  w-[50%] mx-auto">
-                <li className="bg-white text-primary/70 py-2 px-4 rounded-full text-[0.875rem] shadow-md shadow-digital/50 hover:shadow-lg font-bold flex items-center gap-2 hover:-translate-y-2 transition-transform duration-300"> <Zap color="var(--color-digital)" className="drop-shadow-lg drop-shadow-digital/50" strokeWidth={0.875} /> Faster Execution</li>
-                <li className="bg-white text-primary/70 py-2 px-4 rounded-full text-[0.875rem] shadow-md shadow-digital/50 hover:shadow-lg font-bold flex items-center gap-2 hover:-translate-y-2 transition-transform duration-300"> <Shapes color="var(--color-digital)" className="drop-shadow-lg drop-shadow-digital/50" strokeWidth={0.875} /> Stronger Brand Consistency</li>
-                <li className="bg-white text-primary/70 py-2 px-4 rounded-full text-[0.875rem] shadow-md shadow-digital/50 hover:shadow-lg font-bold flex items-center gap-2 hover:-translate-y-2 transition-transform duration-300"> <Puzzle color="var(--color-digital)" className="drop-shadow-lg drop-shadow-digital/50" strokeWidth={0.875} /> Reduced Project Complexity</li>
-                <li className="bg-white text-primary/70 py-2 px-4 rounded-full text-[0.875rem] shadow-md shadow-digital/50 hover:shadow-lg font-bold flex items-center gap-2 hover:-translate-y-2 transition-transform duration-300"> <Sparkles color="var(--color-digital)" className="drop-shadow-lg drop-shadow-digital/50" strokeWidth={0.875} /> Better Learner Engagement</li>
+         <div className=" p-6 flex flex-col gap-6 items-center justify-center w-full">
+            <h1 className="text-center text-secondary-text/50 w-[100%] md:w-[80%] lg:w-[60%]">This integrated approach enables faster execution, stronger brand consistency, reduced project complexity, and significantly better learner engagement.</h1>
+            <ul className="flex flex-wrap gap-4 justify-center items-center  mx-auto shrink-0">
+                <li className=" bg-white text-primary/70 py-1 px-2  sm:py-2 sm:px-4 rounded-full text-[0.600rem] md:text-[0.875rem] shadow-md shadow-digital/50 hover:shadow-lg font-bold flex items-center gap-2 hover:-translate-y-2 transition-transform duration-300"> <Zap color="var(--color-digital)" className="drop-shadow-lg drop-shadow-digital/50 w-[16px]" strokeWidth={0.875} /> Faster Execution</li>
+                <li className=" bg-white text-primary/70 py-1 px-2  sm:py-2 sm:px-4 rounded-full text-[0.600rem] md:text-[0.875rem] shadow-md shadow-digital/50 hover:shadow-lg font-bold flex items-center gap-2 hover:-translate-y-2 transition-transform duration-300"> <Shapes color="var(--color-digital)" className="drop-shadow-lg drop-shadow-digital/50 w-[16px]" strokeWidth={0.875} /> Stronger Brand Consistency</li>
+                <li className=" bg-white text-primary/70 py-1 px-2  sm:py-2 sm:px-4 rounded-full text-[0.600rem] md:text-[0.875rem] shadow-md shadow-digital/50 hover:shadow-lg font-bold flex items-center gap-2 hover:-translate-y-2 transition-transform duration-300"> <Puzzle color="var(--color-digital)" className="drop-shadow-lg drop-shadow-digital/50 w-[16px]" strokeWidth={0.875} /> Reduced Project Complexity</li>
+                <li className=" bg-white text-primary/70 py-1 px-2  sm:py-2 sm:px-4 rounded-full text-[0.600rem] md:text-[0.875rem] shadow-md shadow-digital/50 hover:shadow-lg font-bold flex items-center gap-2 hover:-translate-y-2 transition-transform duration-300"> <Sparkles color="var(--color-digital)" className="drop-shadow-lg drop-shadow-digital/50 w-[16px]" strokeWidth={0.875} /> Better Learner Engagement</li>
             </ul>
          </div>
 

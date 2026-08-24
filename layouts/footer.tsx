@@ -3,133 +3,32 @@
 import SiteLogo from "@/components/site-logos";
 import Link from "next/link";
 import { MoveUpRight } from "lucide-react";
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
-    const footerRef = useRef<HTMLElement | null>(null);
-    const contentRef = useRef<HTMLDivElement | null>(null);
-    const columnsRef = useRef<HTMLDivElement | null>(null);
-    const marqueeRef = useRef<HTMLDivElement | null>(null);
-    const marqueeTrackRef = useRef<HTMLDivElement | null>(null);
 
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            /* --------------------------------
-               FOOTER CONTENT REVEAL
-            -------------------------------- */
-
-            gsap.fromTo(
-                contentRef.current,
-                {
-                    opacity: 0,
-                    y: 80,
-                },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1.1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: contentRef.current,
-                        start: "top 85%",
-                    },
-                },
-            );
-
-            /* --------------------------------
-               COLUMN STAGGER
-            -------------------------------- */
-
-            const columns = columnsRef.current?.children;
-
-            if (columns) {
-                gsap.fromTo(
-                    columns,
-                    {
-                        opacity: 0,
-                        y: 40,
-                    },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.8,
-                        stagger: 0.12,
-                        ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: columnsRef.current,
-                            start: "top 85%",
-                        },
-                    },
-                );
-            }
-
-            /* --------------------------------
-               MARQUEE
-            -------------------------------- */
-
-            const marqueeTrack = marqueeTrackRef.current;
-
-            if (marqueeTrack) {
-                const marqueeWidth = marqueeTrack.scrollWidth / 2;
-
-                gsap.to(marqueeTrack, {
-                    x: -marqueeWidth,
-                    duration: 25,
-                    ease: "none",
-                    repeat: -1,
-                });
-            }
-
-            /* --------------------------------
-               MARQUEE SCROLL PARALLAX
-            -------------------------------- */
-
-            gsap.to(marqueeRef.current, {
-                y: -30,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: marqueeRef.current,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 1,
-                },
-            });
-        }, footerRef);
-
-        return () => ctx.revert();
-    }, []);
 
     return (
         <footer
-            ref={footerRef}
-            className="w-full overflow-hidden  text-white"
+     
+            className="w-full overflow-hidden  text-white relative"
         >
-            {/* =================================
-          MAIN FOOTER
-      ================================= */}
+            {/* ================================= MAIN FOOTER ================================= */}
 
-            <section
-                ref={contentRef}
-                className="w-full flex justify-center px-4 sm:px-6 lg:px-8"
-            >
-                <div className="container border-x border-t border-white/90/10">
+            <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 relative z-5 ">
+                <div className="container ">
                     {/* =================================
               TOP CONTENT
           ================================= */}
 
                     <div
-                        ref={columnsRef}
                         className="
               grid
               grid-cols-1
               sm:grid-cols-2
               lg:grid-cols-4
-              border-b
-              border-white/90/10
+               border-b
+              border-black/90/10
             "
                     >
                         {/* ---------------------------------
@@ -141,10 +40,10 @@ export default function Footer() {
                 p-6
                 sm:p-8
                 lg:p-10
-                border-b
-                sm:border-r
-                lg:border-b-0
-                border-white/90/10
+                 border-b
+                sm: 
+                lg: border-b-0
+                border-black/90/10
                 flex
                 flex-col
                 gap-8
@@ -216,10 +115,10 @@ export default function Footer() {
                 p-6
                 sm:p-8
                 lg:p-10
-                border-b
-                lg:border-b-0
-                lg:border-r
-                border-white/90/10
+                 border-b
+                lg: border-b-0
+                lg: 
+                border-black/90/10
               "
                         >
                             <h3 className="mb-7 text-xs uppercase tracking-[0.2em] font-semibold text-white/40">
@@ -280,10 +179,10 @@ export default function Footer() {
                 p-6
                 sm:p-8
                 lg:p-10
-                border-b
-                sm:border-r
-                lg:border-b-0
-                border-white/90/10
+                 border-b
+                sm: 
+                lg: border-b-0
+                border-black/90/10
               "
                         >
                             <h3 className="mb-7 text-xs uppercase tracking-[0.2em] font-semibold text-white/40">
@@ -441,9 +340,9 @@ export default function Footer() {
                   flex
                   items-center
                   justify-between
-                  border-b
-                  border-white/90/10
-                  ${index !== 3 ? "lg:border-r" : ""}
+                   border-b
+                  border-black/90/10
+                  ${index !== 3 ? "lg: " : ""}
                   hover:bg-digital
                   transition-colors
                   duration-500
@@ -480,74 +379,18 @@ export default function Footer() {
                     </div>
                 </div>
             </section>
+ 
+            <div className="w-full h-full  border-10 absolute inset-0 flex justify-center items-end z-1 bg-gradient-to-t from-black via-digital to-transparent ">
+                <SiteLogo 
+                width={1000}
+                height={1000}
+                />
+            </div>
+            
+            <div className="w-full h-full absolute inset-0 bg-black/80 z-2">
 
-            {/* =================================
-          INFINITE LOGO MARQUEE
-      ================================= */}
-
-            <section
-                ref={marqueeRef}
-                className="
-          w-full
-          overflow-hidden
-          bg-technology
-          border-y
-          border-white/90
-        "
-            >
-                <div
-                    ref={marqueeTrackRef}
-                    className="
-            flex
-            w-max
-            items-center
-            py-8
-            sm:py-10
-          "
-                >
-                    {/* SET 1 */}
-
-                    <div className="flex items-center shrink-0">
-                        {Array.from({ length: 8 }).map((_, index) => (
-                            <div
-                                key={`logo-one-${index}`}
-                                className="
-                  shrink-0
-                  px-8
-                  sm:px-12
-                  md:px-16
-                  border-r
-                  border-white/90
-                "
-                            >
-                                <SiteLogo width={260} height={130} />
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* SET 2
-              Duplicate is required for seamless loop
-          */}
-
-                    <div className="flex items-center shrink-0">
-                        {Array.from({ length: 8 }).map((_, index) => (
-                            <div
-                                key={`logo-two-${index}`}
-                                className="
-                  shrink-0
-                  px-8
-                  sm:px-12
-                  md:px-16
-                  border-r
-                  border-white/90
-                "
-                            >
-                                <SiteLogo width={260} height={130} />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            </div>
+  
         </footer>
     );
 }

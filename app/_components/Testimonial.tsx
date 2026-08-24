@@ -135,7 +135,7 @@ export default function Testimonial() {
   }, [activeTestimonial]);
 
   return (
-    <section className="relative w-full overflow-hidden bg-white py-24 md:py-32">
+    <section className="relative w-full overflow-hidden bg-white py-24 md:py-32 bg-gradient-l ">
       <div className="mx-auto grid w-full max-w-[1450px] grid-cols-1 items-center gap-16 px-6 md:px-10 lg:grid-cols-[0.85fr_1fr] lg:gap-20">
 
         {/* LEFT CONTENT */}
