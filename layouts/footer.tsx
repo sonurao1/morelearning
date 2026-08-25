@@ -380,14 +380,8 @@ export default function Footer() {
                 </div>
             </section>
  
-            <div className="w-full h-full  border-10 absolute inset-0 flex justify-center items-end z-1 bg-gradient-to-t from-black via-digital to-transparent ">
-                <SiteLogo 
-                width={1000}
-                height={1000}
-                />
-            </div>
             
-            <div className="w-full h-full absolute inset-0 bg-black/80 z-2">
+            <div className="w-full h-full absolute inset-0 bg-gradient-to-t from-black via-digital/30 to-transparent z-0">
 
             </div>
   

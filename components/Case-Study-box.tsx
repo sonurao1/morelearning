@@ -37,13 +37,15 @@ export default function CaseStudyBox({
       <div className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-primary-action to-digital transition-transform duration-500 ease-out group-hover:scale-x-100" />
 
       {/* Arrow cue — hamesha halka visible (mobile/touch pe hover nahi hota),
-          hover pe thoda pop karta hai */}
-      <div className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 opacity-70 backdrop-blur-md transition-all duration-500 group-hover:scale-110 group-hover:opacity-100">
+          hover pe thoda pop karta hai. Solid bg — koi backdrop-blur nahi,
+          kyunki GSAP transform ke saath backdrop-filter Chrome mein poore
+          card ko hi blur render karne laga tha */}
+      <div className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-primary/80 opacity-70 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100">
         <ArrowUpRight size={16} className="text-white" />
       </div>
 
-      {/* Category tag */}
-      <p className="absolute left-5 top-5 rounded-full border border-white/30 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white backdrop-blur-md transition-transform duration-500 group-hover:-translate-y-0.5">
+      {/* Category tag — solid bg, backdrop-blur nahi (same reason as upar) */}
+      <p className="absolute left-5 top-5 rounded-full border border-white/30 bg-primary/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white transition-transform duration-500 group-hover:-translate-y-0.5">
         {category}
       </p>
 
@@ -66,7 +68,7 @@ export default function CaseStudyBox({
             {results.map((result, index) => (
               <li
                 key={index}
-                className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-medium text-white backdrop-blur-md"
+                className="rounded-full bg-primary/80 px-2.5 py-1 text-[10px] font-medium text-white"
               >
                 {result}
               </li>

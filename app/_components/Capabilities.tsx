@@ -135,7 +135,7 @@ export default function Capabilities() {
           ref={eyebrowRef}
           className="inline-flex w-fit items-center gap-2 text-primary-action text-sm font-semibold uppercase tracking-[0.2em]"
         >
-          <span ref={dotRef} className="h-1.5 w-1.5 rounded-full bg-primary-action" />
+          <span ref={dotRef} className="h-1.5 w-1.5 rounded-full " />
           Enterprise Capabilities
         </span>
         <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight">

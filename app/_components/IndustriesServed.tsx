@@ -131,7 +131,7 @@ export default function IndustriesServed() {
         </div>
 
         {/* Copy + list */}
-        <div className="flex flex-col gap-5">
+        <div className="hidden md:flex flex-col gap-5">
           <p className="industry-reveal flex items-center gap-2 text-primary-action text-xs sm:text-sm font-bold tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-primary-action" />
             Industries We Serve

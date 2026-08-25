@@ -3,7 +3,6 @@
 import { useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Flip } from "gsap/Flip";
 import { useGSAP } from "@gsap/react";
 
 import CaseStudyBox from "@/components/Case-Study-box";
@@ -15,7 +14,7 @@ import {
 } from "@/data/home.data";
 import type { CaseStudy } from "@/types/content";
 
-gsap.registerPlugin(ScrollTrigger, Flip, useGSAP);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function CaseStudy() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -25,8 +24,8 @@ export default function CaseStudy() {
   const tabsRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const highlightRef = useRef<HTMLSpanElement>(null);
-  const flipStateRef = useRef<ReturnType<typeof Flip.getState> | null>(null);
-  const previousHeightRef = useRef<number | null>(null);
+  const isAnimatingRef = useRef(false);
+  const isFirstRenderRef = useRef(true);
 
   const filteredCaseStudies = useMemo(() => {
     if (activeCategory === "All") return CASE_STUDIES;
@@ -35,23 +34,27 @@ export default function CaseStudy() {
     );
   }, [activeCategory]);
 
-  // Tab click — layout change se PEHLE current card positions snapshot kar lo,
-  // taaki baad mein Flip old -> new position ka smooth animation bana sake
+  // Tab click — simple fade-out, phir list badlo, phir fade-in.
+  // Koi absolute positioning ya manual height-lock nahi — layout change
+  // tabhi hoti hai jab grid already invisible (opacity 0) hoti hai,
+  // isliye koi jump/glitch/collapse dikhta hi nahi.
   function handleCategoryClick(category: string) {
-    if (category === activeCategory) return;
+    if (category === activeCategory || isAnimatingRef.current) return;
+
     const grid = gridRef.current;
-    if (grid) {
-      // Height ko YAHI, isi tick mein, turant DOM pe lock kar do — React state
-      // update se pehle hi. Post-render effect mein lock karne se ek frame ke
-      // liye natural (collapsed/resized) layout paint ho jaata tha, wahi
-      // flicker tha. Ab koi gap hi nahi bachta.
-      const currentHeight = grid.getBoundingClientRect().height;
-      grid.style.height = `${currentHeight}px`;
-      grid.style.overflow = "hidden";
-      previousHeightRef.current = currentHeight;
-      flipStateRef.current = Flip.getState(grid.children);
+    if (!grid) {
+      setActiveCategory(category);
+      return;
     }
-    setActiveCategory(category);
+
+    isAnimatingRef.current = true;
+    gsap.to(grid, {
+      opacity: 0,
+      y: 10,
+      duration: 0.2,
+      ease: "power2.in",
+      onComplete: () => setActiveCategory(category),
+    });
   }
 
   // Header — ek baar upar se reveal
@@ -93,84 +96,35 @@ export default function CaseStudy() {
     { dependencies: [activeCategory], scope: tabsRef }
   );
 
-  // Cards — pehli baar scroll mein aate hi ek baar pop-up hote hai
+  // Naya filtered list render hone ke baad — grid ko reset karo aur
+  // har card ko halke stagger ke saath fade+scale-in karo
   useGSAP(
     () => {
-      ScrollTrigger.batch(".case-study-card", {
-        start: "top 88%",
-        once: true,
-        onEnter: (batch) =>
-          gsap.from(batch, {
-            opacity: 0,
-            scale: 0.9,
-            y: 50,
-            rotateY: -25,
-            transformPerspective: 800,
-            duration: 0.8,
-            ease: "power3.out",
-            stagger: 0.12,
-          }),
-      });
-    },
-    { scope: sectionRef }
-  );
-
-  // Filter badalne pe — Flip poori grid ko old position se new position tak
-  // smoothly reflow karta hai; jo cards nayi list mein aayi wo fade+scale-in
-  // hoti hai, jo hati wo fade+scale-out
-  useGSAP(
-    () => {
-      const state = flipStateRef.current;
-      if (!state) return;
-      flipStateRef.current = null;
-
       const grid = gridRef.current;
-      const wasLocked = previousHeightRef.current != null;
-      previousHeightRef.current = null;
+      if (!grid) return;
 
-      // Height already lock ho chuki hai (click handler mein) — ab bas
-      // natural end-height tak smoothly tween karo, Flip ke saath sync mein
-      if (grid && wasLocked) {
-        const endHeight = grid.getBoundingClientRect().height;
-        gsap.to(grid, {
-          height: endHeight,
-          duration: 0.6,
-          ease: "power3.inOut",
-          onComplete: () => {
-            grid.style.height = "";
-            grid.style.overflow = "";
-          },
-        });
+      // Pehli baar page load pe koi transition nahi chahiye
+      if (isFirstRenderRef.current) {
+        isFirstRenderRef.current = false;
+        return;
       }
 
-      Flip.from(state, {
-        duration: 0.6,
-        ease: "power3.inOut",
-        scale: true,
-        absolute: true,
-        stagger: 0.03,
-        onEnter: (elements) =>
-          gsap.fromTo(
-            elements,
-            { opacity: 0, scale: 0.85, y: 20, rotate: -2 },
-            {
-              opacity: 1,
-              scale: 1,
-              y: 0,
-              rotate: 0,
-              duration: 0.5,
-              ease: "power2.out",
-              stagger: 0.06,
-            }
-          ),
-        onLeave: (elements) =>
-          gsap.to(elements, {
-            opacity: 0,
-            scale: 0.85,
-            duration: 0.3,
-            ease: "power2.in",
-          }),
-      });
+      gsap.set(grid, { opacity: 1, y: 0 });
+      gsap.fromTo(
+        grid.children,
+        { opacity: 0, y: 16, scale: 0.94 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.45,
+          ease: "power2.out",
+          stagger: 0.05,
+          onComplete: () => {
+            isAnimatingRef.current = false;
+          },
+        }
+      );
     },
     { dependencies: [activeCategory], scope: sectionRef }
   );
