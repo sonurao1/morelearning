@@ -32,6 +32,7 @@ interface TestimonialCardProps extends TestimonialTypes {
 }
 
 export default function TestimonialCard({
+  id,
   name,
   text,
   rating,
