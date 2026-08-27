@@ -67,13 +67,14 @@ export default function Testimonial() {
         <div ref={trackRef} className="flex w-max gap-6 py-6">
           {[...testimonials, ...testimonials].map(
             ({ id, name, text, rating }: TestimonialTypes, index) => (
-              <TestimonialCard
-                key={`${id}-${index}`}
-                name={name}
-                text={text}
-                rating={rating}
-                accent={ACCENTS[index % ACCENTS.length]}
-              />
+             <TestimonialCard
+              key={`${id}-${index}`}
+              id={id}
+              name={name}
+              text={text}
+              rating={rating}
+              accent={ACCENTS[index % ACCENTS.length]}
+            />
             )
           )}
         </div>
