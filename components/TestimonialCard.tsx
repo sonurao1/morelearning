@@ -4,24 +4,30 @@ import { Star, StarHalf, Quote } from "lucide-react";
 const ACCENT_STYLES = {
   "primary-action": {
     spine: "bg-primary-action",
-    glyph: "text-primary-action/[0.15]",
+    glyph: "text-primary-action/[0.08]",
     label: "text-primary-action",
-    glow: "bg-[radial-gradient(circle_at_50%_50%,_var(--color-primary-action)_0%,_transparent_70%)]",
+    wash: "bg-primary-action/[0.05]",
     border: "group-hover:border-primary-action/40",
+    // literal rgba, not the CSS var — arbitrary shadow values with
+    // color-mix()/vars aren't reliably supported across engines yet,
+    // a plain rgba() is safe everywhere
+    shadow: "group-hover:shadow-[0_25px_60px_-15px_rgba(16,84,232,0.35)]",
   },
   digital: {
     spine: "bg-digital",
-    glyph: "text-digital/[0.15]",
+    glyph: "text-digital/[0.08]",
     label: "text-digital",
-    glow: "bg-[radial-gradient(circle_at_50%_50%,_var(--color-digital)_0%,_transparent_70%)]",
+    wash: "bg-digital/[0.05]",
     border: "group-hover:border-digital/40",
+    shadow: "group-hover:shadow-[0_25px_60px_-15px_rgba(120,20,184,0.35)]",
   },
   technology: {
     spine: "bg-technology",
-    glyph: "text-technology/[0.15]",
+    glyph: "text-technology/[0.08]",
     label: "text-technology",
-    glow: "bg-[radial-gradient(circle_at_50%_50%,_var(--color-technology)_0%,_transparent_70%)]",
+    wash: "bg-technology/[0.05]",
     border: "group-hover:border-technology/40",
+    shadow: "group-hover:shadow-[0_25px_60px_-15px_rgba(3,140,163,0.35)]",
   },
 } as const;
 
@@ -32,10 +38,10 @@ interface TestimonialCardProps extends TestimonialTypes {
 }
 
 export default function TestimonialCard({
-  id,
   name,
   text,
   rating,
+  id,
   accent = "primary-action",
 }: TestimonialCardProps) {
   const starRating = rating >= 4.6 ? 5 : rating >= 4.1 ? 4.5 : 4;
@@ -46,15 +52,15 @@ export default function TestimonialCard({
   return (
     <article className="group relative w-[320px] shrink-0">
       <div
-        aria-hidden="true"
-        className={`pointer-events-none absolute left-1/2 top-1/2 h-[160%] w-[160%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-40 ${styles.glow}`}
-      />
-
-      {/* h-[380px] + flex-col = fixed "frame". Every card is the
-          exact same outer size no matter how long its text is */}
-      <div
-        className={`relative flex h-[380px] flex-col overflow-hidden rounded-3xl border border-white/10 bg-brand p-7 transition-all duration-500 ease-out group-hover:-translate-y-3 ${styles.border}`}
+        className={`relative flex h-[380px] flex-col overflow-hidden rounded-3xl border border-neutral-200 bg-white p-7 shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all duration-500 ease-out group-hover:-translate-y-3 ${styles.border} ${styles.shadow}`}
       >
+        {/* soft accent wash in the corner — quiet on light bg,
+            replaces the dark-theme's blur "aura" trick */}
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full blur-3xl ${styles.wash}`}
+        />
+
         <div className={`absolute inset-x-0 top-0 h-1 ${styles.spine}`} />
 
         <Quote
@@ -63,7 +69,6 @@ export default function TestimonialCard({
           className={`pointer-events-none absolute -right-6 -top-4 ${styles.glyph} transition-transform duration-500 group-hover:scale-110`}
         />
 
-        {/* fixed-size block */}
         <div className="relative mb-5 mt-2 flex items-center gap-1">
           {Array.from({ length: fullStars }).map((_, index) => (
             <Star
@@ -80,26 +85,21 @@ export default function TestimonialCard({
               className="fill-yellow-400 text-yellow-400"
             />
           )}
-          <span className="ml-2 text-sm font-medium text-white/50">
+          <span className="ml-2 text-sm font-medium text-neutral-500">
             {rating.toFixed(1)}
           </span>
         </div>
 
-        {/* flex-1 = "mat board". Absorbs the height difference between
-            a short testimonial and a long one. line-clamp-6 caps the
-            longest ones so they never overflow the frame */}
         <blockquote className="relative flex-1">
-          <p className="line-clamp-6 text-[15px] leading-7 text-white/70">
+          <p className="line-clamp-6 text-[15px] leading-7 text-neutral-600">
             &ldquo;{text}&rdquo;
           </p>
         </blockquote>
 
-        {/* everything below always lands in the same spot, because
-            the block above always fills exactly the leftover space */}
-        <div className="mb-7 h-px w-full bg-white/10" />
+        <div className="mb-7 h-px w-full bg-neutral-100" />
 
         <footer className="relative">
-          <h3 className="font-display text-base font-semibold tracking-tight text-white">
+          <h3 className="font-display text-base font-semibold tracking-tight text-neutral-900">
             {name}
           </h3>
           <p

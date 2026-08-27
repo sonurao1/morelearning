@@ -319,7 +319,7 @@ export const industriesServed = [
     heading: "Banking, Financial Services & Insurance",
     subHeading: "Compliance-heavy, high-stakes learning at scale.",
     icon: (
-        <Landmark className="w-full h-full transition-all duration-300  p-2 text-primary-action rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-actiofull h-full transition-all duration-300"/>  
+        <Landmark className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-actiofull h-full transition-all duration-300"/>  
     ),
     image: "/images/banking-service.jpg"
 
@@ -328,7 +328,7 @@ export const industriesServed = [
     heading: "Manufacturing & Logistics",
     subHeading: "Safety, process and technical skilling on the floor.",
     icon: (
-        <Factory className="w-full h-full transition-all duration-300 p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
+        <Factory className="w-full h-full transition-all duration-300 p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 "/>  
     ),
     image: "/images/manufacture-service.jpg"
 
@@ -337,7 +337,7 @@ export const industriesServed = [
     heading: "Pharma & Healthcare",
     subHeading: "Regulated, accuracy-critical knowledge transfer.",
     icon: (
-        <HeartPulse className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
+        <HeartPulse className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 "/>  
     ),
     image: "/images/pharma-service.jpg"
 
@@ -346,7 +346,7 @@ export const industriesServed = [
     heading: "Technology & Telecom",
     subHeading: "Fast-cycle product and platform enablement.",
     icon: (
-        <Cpu className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
+        <Cpu className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 "/>  
     ),
     image: "/images/technology-service.jpg"
 
@@ -355,7 +355,7 @@ export const industriesServed = [
     heading: "Retail & Consumer Goods",
     subHeading: "Frontline, dealer and customer-facing enablement.",
     icon: (
-        <ShoppingCart className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
+        <ShoppingCart className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 "/>  
     ),
     image: "/images/retail-service.jpg"
 
@@ -364,7 +364,7 @@ export const industriesServed = [
     heading: "Government & Public Sector",
     subHeading: "Large-scale, accessible workforce programs.",
     icon: (
-        <Building2 className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
+        <Building2 className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 "/>  
     ),
     image: "/images/goverment-service.jpg"
 
@@ -373,7 +373,7 @@ export const industriesServed = [
     heading: "Energy & Utilities",
     subHeading: "Field, safety and technical certification training.",
     icon: (
-        <Zap className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action "/>  
+        <Zap className="w-full h-full transition-all duration-300  p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 "/>  
     ),
     image: "/images/energy-service.jpg"
 
@@ -382,7 +382,7 @@ export const industriesServed = [
     heading: "Education & Professional Services",
     subHeading: "Structured, outcome-driven learning journeys.",
     icon: (
-        <GraduationCap className=" w-full h-full transition-all duration-300 t p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 text-primary-action " />  
+        <GraduationCap className=" w-full h-full transition-all duration-300 t p-2 rounded-2xl bg-digital/20 group-hover:border-white group-hover:text-white group-hover:bg-primary-action stroke-1 " />  
     ),
     image: "/images/education-service.jpg"
 

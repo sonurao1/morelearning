@@ -163,7 +163,7 @@ export default function IndustriesServed() {
                       aria-pressed={isActive}
                       className={`w-full text-left p-4 border rounded-2xl flex items-start gap-3 transition-colors duration-300 ${
                         isActive
-                          ? "bg-primary-action/5 border-primary-action shadow-sm"
+                          ? "bg-primary-action/5 border-primary-action shadow-sm "
                           : "border-border hover:bg-primary-action/5"
                       }`}
                     >
