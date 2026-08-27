@@ -93,12 +93,9 @@ export interface IndusriesServiceType {
 // Testimonial
 // ─────────────────────────────────────────────────────────────────────────
 
-export interface TestimonialTypes {
-  quote: string;
+ export interface TestimonialTypes {
+  id: number;
   name: string;
-  role: string;
-  company: string;
-  initials: string;
-  image: StaticImageData;
-  stars: number;
+  text: string;
+  rating: number;
 }

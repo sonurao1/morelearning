@@ -103,7 +103,7 @@ export default function Capabilities() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-dvh flex flex-col bg-primary text-white overflow-hidden pb-10 md:pb-14"
+      className="relative w-full h-dvh flex flex-col bg-primary text-white overflow-hidden pb-6 sm:pb-10 md:pb-14"
     >
       {/* Ambient — dual-tone glow, diagonal balance */}
       <div className="pointer-events-none absolute -top-32 -left-32 h-[480px] w-[480px] rounded-full bg-primary-action/15 blur-[130px]" />
@@ -123,22 +123,28 @@ export default function Capabilities() {
       <div
         ref={numeralRef}
         aria-hidden
-        className="pointer-events-none absolute -bottom-16 -right-6 md:-right-14 select-none text-[240px] md:text-[380px] font-extrabold leading-none tracking-tighter tabular-nums"
-        style={{ WebkitTextStroke: "1.5px rgba(255,255,255,0.14)", color: "transparent" }}
+        className="pointer-events-none absolute -bottom-16 -right-6 md:-right-14 select-none text-[160px] sm:text-[240px] md:text-[380px] font-extrabold leading-none tracking-tighter tabular-nums"
+        style={{
+          WebkitTextStroke: "1.5px rgba(255,255,255,0.14)",
+          color: "transparent",
+        }}
       >
         01
       </div>
 
-      {/* Intro content */}
-      <div className="relative z-10 shrink-0 w-full max-w-[1450px] mx-auto px-6 md:px-10 pt-20 md:pt-24 pb-10 flex flex-col gap-5">
+      {/* Intro content — mobile pe compact rakha hai (kam padding/font-size)
+          taaki neeche card ke liye poori jagah bache, warna chhote screens
+          (jaise iPhone SE) pe heading hi zyada space kha jaata tha aur card
+          collapse/clip ho jaati thi */}
+      <div className="relative z-10 shrink-0 w-full max-w-[1450px] mx-auto px-6 md:px-10 pt-10 sm:pt-16 md:pt-24 pb-5 sm:pb-8 md:pb-10 flex flex-col gap-3 sm:gap-4 md:gap-5">
         <span
           ref={eyebrowRef}
-          className="inline-flex w-fit items-center gap-2 text-primary-action text-sm font-semibold uppercase tracking-[0.2em]"
+          className="inline-flex w-fit items-center gap-2 text-primary-action text-xs sm:text-sm font-semibold uppercase tracking-[0.2em]"
         >
           <span ref={dotRef} className="h-1.5 w-1.5 rounded-full " />
           Enterprise Capabilities
         </span>
-        <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] sm:leading-[1.02] tracking-tight">
           <span className="block overflow-hidden">
             <span ref={line1Ref} className="block">
               Four Disciplines.
@@ -155,11 +161,13 @@ export default function Capabilities() {
         </h2>
       </div>
 
-      {/* Horizontal-scroll viewport — full-bleed, track ke andar hi inset padding hai */}
+      {/* Horizontal-scroll viewport — full-bleed, track ke andar hi inset padding hai.
+          h-full track tak propagate hoti hai, isliye card ki height fixed px nahi
+          balki jitni actual jagah bachi hai usi ke hisaab se fluid hai */}
       <div className="relative z-10 flex-1 min-h-0 w-full overflow-hidden flex items-center motion-reduce:overflow-x-auto">
         <div
           ref={trackRef}
-          className="flex items-center gap-8 md:gap-10 will-change-transform px-6 md:px-10"
+          className="flex h-full items-center gap-8 md:gap-10 will-change-transform px-6 md:px-10"
         >
           {capabilities.map(({ heading, subHeading, icon, tags, image }) => (
             <CapabilityCard

@@ -17,13 +17,17 @@ export default function CapabilityCard({
         className="
           relative
           w-[calc(100vw-32px)]
-          h-[400px]
+          h-full
+          min-h-[240px]
+          max-h-[420px]
 
           sm:w-[500px]
-          sm:h-[480px]
+          sm:min-h-[340px]
+          sm:max-h-[480px]
 
           lg:w-[600px]
-          lg:h-[520px]
+          lg:min-h-[380px]   
+          lg:max-h-[520px]
 
           rounded-2xl
           border border-white/10
@@ -65,18 +69,20 @@ export default function CapabilityCard({
           "
         />
 
-        {/* Content */}
+        {/* Content — pehle yahan ek 375px-specific hack tha (bottom-20,
+            bina inset-x ke) jo iPhone SE jaisi widths pe box ko galat
+            size/position deta tha. Ab hamesha inset-0 hai, aur padding/
+            font-size responsive classes hi chhote screens sambhalti hai */}
         <div
           className="
             absolute
-            bottom-20
-            min-[376px]:inset-0
+            inset-0
             z-10
             flex
             flex-col
             justify-end
 
-            p-5
+            p-4
             sm:p-7
             lg:p-8
 
@@ -87,7 +93,7 @@ export default function CapabilityCard({
         >
           <h2
             className="
-              text-[16px]
+              text-lg
               sm:text-3xl
               font-bold
               leading-tight
@@ -98,8 +104,7 @@ export default function CapabilityCard({
 
           <p
             className="
-            
-              text-[11px]
+              text-xs
               sm:text-base
               text-white/60
               leading-relaxed
@@ -136,7 +141,9 @@ export default function CapabilityCard({
             ))}
           </div>
 
-          {/* CTA */}
+          {/* CTA — pehle sirf hover pe reveal hota tha (>=360px se), jo touch
+              devices pe kabhi dikhta hi nahi tha. Ab mobile pe hamesha
+              visible, sirf sm+ (real pointer) pe hover-gated hai */}
           <Link
             href="#"
             className="
@@ -152,10 +159,10 @@ export default function CapabilityCard({
               opacity-100
               translate-y-0
 
-              min-[360px]:opacity-0
-              sm:translate-y-1
-              min-[360px]:group-hover:opacity-100
-              sm:group-hover:translate-y-0
+              min-[340px]:opacity-0
+              min-[340px]:translate-y-1
+              min-[340px]:group-hover:opacity-100
+              min-[340px]:group-hover:translate-y-0
 
               focus-visible:opacity-100
               focus-visible:translate-y-0

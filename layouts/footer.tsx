@@ -381,7 +381,7 @@ export default function Footer() {
             </section>
  
             
-            <div className="w-full h-full absolute inset-0 bg-gradient-to-t from-black via-digital/30 to-transparent z-0">
+            <div className="w-full h-full absolute inset-0 bg-gradient-to-t from-black via-digital/10 to-transparent z-0">
 
             </div>
   

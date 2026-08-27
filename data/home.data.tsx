@@ -389,55 +389,60 @@ export const industriesServed = [
   }
 ]
 
-export const TESTIMONIALS: TestimonialTypes[] = [
+
+export const testimonials: TestimonialTypes[] = [
   {
-    quote:
-      "MoreLearning brought every discipline we needed — strategy, design, development — under one roof. That alone cut months off our rollout.",
-    name: "Chief Learning Officer",
-    role: "Chief Learning Officer",
-    company: "Global Financial Services Enterprise",
-    initials: "CL",
-    image: Avatar1,
-    stars: 5
+    id: 1,
+    name: "Dwayne Campbell",
+    text: "Thank you, Imran Khan, for creating an elearning video prototype for our project. You did a good job in using motion graphics, clear texts, and pleasant music. You have shown your skills and creativity as a presentation, elearning, and motion graphics expert. We thank you for your work and we wish you success in your future projects.",
+    rating: 4.0,
   },
   {
-    quote:
-      "The immersive training experience they built made a genuinely complex process easy for our field teams to understand and retain.",
-    name: "Head of L&D",
-    role: "Head of Learning & Development",
-    company: "Leading Pharmaceutical Manufacturer",
-    initials: "HL",
-    image: Avatar2,
-    stars: 5
+    id: 2,
+    name: "Jeffrey Obomeghie",
+    text: "Excellent work by Imran! Highly recommended!",
+    rating: 5.0,
   },
   {
-    quote:
-      "They operate like an extension of our team, not a vendor. Our sales enablement content has never been more consistent.",
-    name: "VP, Sales Enablement",
-    role: "VP, Sales Enablement",
-    company: "Enterprise Technology Company",
-    initials: "VP",
-    image: Avatar3,
-    stars: 5
+    id: 3,
+    name: "Daniela Catarino",
+    text: "We would highly recommend him to any company looking for a reliable partner – he has shown great professionalism, reliability and attention to detail.",
+    rating: 4.7,
   },
   {
-    quote:
-      "The immersive training experience they built made a genuinely complex process easy for our field teams to understand and retain.",
-    name: "Head of L&D",
-    role: "Head of Learning & Development",
-    company: "Leading Pharmaceutical Manufacturer",
-    initials: "HL",
-    image: Avatar4,
-    stars: 5
+    id: 4,
+    name: "Holger Manteufel",
+    text: "Imran Khan and his team put in a great performance as usual. The web-based training was extremely well received and was implemented exactly according to our specifications. Many thanks Imran.",
+    rating: 5.0,
   },
-   {
-    quote:
-      "MoreLearning brought every discipline we needed — strategy, design, development — under one roof. That alone cut months off our rollout.",
-    name: "Chief Learning Officer",
-    role: "Chief Learning Officer",
-    company: "Global Financial Services Enterprise",
-    initials: "CL",
-    image: Avatar5,
-    stars: 5
+  {
+    id: 5,
+    name: "Suzanne Battaglia",
+    text: "Imran has done a great work on the e-module creation, and the result is in line with our expectations. He has efficiently implemented any correction/change we have required. Plus, the communication with him has been very good, both by email and in the calls we have had.",
+    rating: 5.0,
+  },
+  {
+    id: 6,
+    name: "Lee Corbett",
+    text: "Imran is a pleasure to work with. He gets the job done without fuss. We look forward to working with him again soon.",
+    rating: 5.0,
+  },
+  {
+    id: 7,
+    name: "Mena Khan",
+    text: "Great to work with, punctual, responsive and very patient. Thanks for a great job on the WBT Imran!",
+    rating: 5.0,
+  },
+  {
+    id: 8,
+    name: "Jackie Young",
+    text: "Great experience working with Imran! Professional, reliable, and delivered excellent work.",
+    rating: 5.0,
+  },
+  {
+    id: 9,
+    name: "Lee Corbett",
+    text: "Imran was excellent to work with. No fuss. He did an excellent job on turning our content into eLearning and the timeframe was efficient. Very easy to work with. Will be back with another project.",
+    rating: 5.0,
   },
 ];
