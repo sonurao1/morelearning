@@ -1,6 +1,17 @@
 import MovingBrands from "@/components/brands-carousel";
+import { useTextFadeIn } from "@/libs/text-fade"
 
 export default function TrustedBrands() {
+  const fadeRef = useTextFadeIn({
+    duration: 1.5,
+    y: 40,
+    delay: 0.2,
+    stagger: 0.1,
+    blur: 12,
+    scrollTrigger: true,
+    top: "top 80%",
+  });
+
   return (
     <section className="relative overflow-hidden bg-primary py-20 md:py-28">
       {/* ambient glow orbs — digital + technology accents, signature element */}
@@ -13,16 +24,17 @@ export default function TrustedBrands() {
         aria-hidden="true"
       />
 
-      <div className="container relative mx-auto flex flex-col items-center gap-10 px-4 md:gap-14">
+      <div className="container relative mx-auto flex flex-col items-center gap-10 px-4 md:gap-14" ref={fadeRef}> 
         {/* heading */}
         <div className="flex flex-col items-center gap-4">
-          <h2 className="max-w-3xl text-balance text-center font-display text-2xl font-medium tracking-tight text-white sm:text-3xl md:text-4xl">
+          <h2 className="max-w-3xl text-balance text-center font-display text-2xl font-medium tracking-tight text-white sm:text-3xl md:text-4xl" data-fade>
             Trusted by Leading Enterprises Worldwide
           </h2>
           {/* gradient rule — spans the full brand palette in one small accent */}
           <span
             className="h-[3px] w-16 rounded-full bg-gradient-to-r from-primary-action via-digital to-technology"
             aria-hidden="true"
+            data-fade
           />
         </div>
 
@@ -36,12 +48,12 @@ export default function TrustedBrands() {
               "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
           }}
         >
-          <MovingBrands direction="left" />
-          <MovingBrands direction="right" />
+          <MovingBrands direction="left" data-fade />
+          <MovingBrands direction="right" data-fade />
         </div>
 
         {/* supporting copy */}
-        <p className="max-w-6xl text-balance text-center text-sm leading-relaxed text-white/60 md:text-base">
+        <p className="max-w-6xl text-balance text-center text-sm leading-relaxed text-white/60 md:text-base" data-fade>
           Whether it's developing global learning programs, executive presentations, technical product visualizations, immersive 3D experiences, or enterprise communication assets, organizations trust MoreLearning to deliver work that meets the highest standards of quality, speed, and business impact.
         </p>
       </div>

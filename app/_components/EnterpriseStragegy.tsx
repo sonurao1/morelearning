@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { CircleCheck } from "lucide-react"
+import { useTextFadeIn } from "@/libs/text-fade"
 
 const enterpriseFeatures = [
   "Multi-disciplinary in-house team",
@@ -13,6 +14,16 @@ const enterpriseFeatures = [
 ]
 
 export default function EnterpriseStrategy() {
+  const featureRef = useTextFadeIn({
+    duration: 1.5,
+    y: 40,
+    delay: 0.2,
+    stagger: 0.1,
+    blur: 12,
+    scrollTrigger: true,
+    top: "top 85%",
+  });
+
   return (
     <section className="relative w-full overflow-hidden bg-primary py-20 md:py-28">
       {/* Background image + legibility scrim */}
@@ -29,17 +40,17 @@ export default function EnterpriseStrategy() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-8">
+      <div className="relative z-10 container mx-auto px-6 lg:px-8" ref={featureRef}>
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-10">
           {/* Copy */}
-          <div className="flex flex-col items-start gap-5">
+          <div className="flex flex-col items-start gap-5"  data-fade >
             <span className="text-sm font-semibold uppercase tracking-wide text-primary-action">
               Built for Enterprise Scale
             </span>
-            <h1 className="max-w-xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl"  data-fade >
               Enterprise-Ready, From Strategy to Delivery.
             </h1>
-            <p className="max-w-md text-base text-white/80 sm:text-lg">
+            <p className="max-w-md text-base text-white/80 sm:text-lg"  data-fade >
               Every engagement is backed by a multidisciplinary team and
               workflows built to move at the pace global organizations need.
             </p>

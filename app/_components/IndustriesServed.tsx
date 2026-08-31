@@ -6,6 +6,8 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
 
+import { useTextFadeIn } from "@/libs/text-fade"
+
 // Data
 import { industriesServed } from "@/data/home.data"
 
@@ -26,6 +28,16 @@ export default function IndustriesServed() {
   // Derived, not stored — no separate `src` state / effect chain needed
   const activeIndustry = industriesServed[selected]
   const totalIndustries = industriesServed.length
+
+  const fadeRef = useTextFadeIn({
+    duration: 1.5,
+    y: 40,
+    scrollTrigger: true,
+    delay: 0.2,
+    stagger: { each: 0.15, from: "start" },
+    blur: 12,
+    top: "top 80%",
+  })
 
   // Section entrance — reveals once on scroll into view
   useGSAP(
@@ -76,7 +88,7 @@ export default function IndustriesServed() {
       ref={sectionRef}
       className="px-4 sm:px-6 lg:px-8 py-16 lg:py-24 bg-white overflow-hidden"
     >
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[45%_1fr] gap-10 lg:gap-16 items-center">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[45%_1fr] gap-10 lg:gap-16 items-center" ref={fadeRef}>
         {/* Image */}
         <div className="relative industry-reveal">
           <div className="relative aspect-[4/5] w-full rounded-3xl overflow-hidden">
@@ -132,16 +144,16 @@ export default function IndustriesServed() {
 
         {/* Copy + list */}
         <div className="hidden md:flex flex-col gap-5">
-          <p className="industry-reveal flex items-center gap-2 text-primary-action text-xs sm:text-sm font-bold tracking-widest uppercase">
+          <p className="industry-reveal flex items-center gap-2 text-primary-action text-xs sm:text-sm font-bold tracking-widest uppercase" data-fade>
             <span className="w-1.5 h-1.5 rounded-full bg-primary-action" />
             Industries We Serve
           </p>
 
-          <h2 className="industry-reveal text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] text-primary">
+          <h2 className="industry-reveal text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] text-primary" data-fade>
             Deep Experience Across Complex, Regulated Industries.
           </h2>
 
-          <p className="industry-reveal text-secondary-text max-w-xl">
+          <p className="industry-reveal text-secondary-text max-w-xl" data-fade>
             From highly regulated environments to fast-moving consumer
             businesses, we adapt learning strategy, content and technology to
             the realities of your sector. Select an industry to see it in
@@ -156,7 +168,7 @@ export default function IndustriesServed() {
               ) => {
                 const isActive = i === selected
                 return (
-                  <li key={heading} className="industry-reveal">
+                  <li key={heading} className="industry-reveal" data-fade>
                     <button
                       type="button"
                       onClick={() => handleSelect(i)}

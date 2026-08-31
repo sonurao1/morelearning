@@ -8,6 +8,8 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { useTextFadeIn } from "@/libs/text-fade";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function EnterpriseEnablement() {
@@ -50,9 +52,22 @@ export default function EnterpriseEnablement() {
 
   }, []);
 
+    const fadeRef = useTextFadeIn({
+    duration: 1.5,
+    y: 40,
+    delay: 0.2,
+    stagger: 0.1,
+    blur: 12,
+    scrollTrigger: true,
+    top: "top 70%",
+  });
+
   return (
-    <section className="w-full bg-white px-4 py-16 md:py-24">
-      <div className="container mx-auto grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+    <section className="w-full bg-white px-4 py-16 md:py-24" >
+      <div
+        ref={fadeRef}
+        className="container mx-auto grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20"
+      >
         {/* Image */}
         
         <div className="relative">
@@ -85,22 +100,34 @@ export default function EnterpriseEnablement() {
         </div>
 
         {/* Content */}
-        <div className="flex h-full flex-col gap-6">
-          <h2 className="text-[13px] font-bold text-primary-action md:text-xl">
+        <div className="flex h-full flex-col gap-6" >
+          <h2
+            className="opacity-0 blur-md scale-95 text-[13px] font-bold text-primary-action md:text-xl"
+            data-fade
+          >
             Your Enterprise Enablement Partner
           </h2>
 
-          <h1 className="w-[90%] text-3xl font-bold text-primary md:text-5xl">
+          <h1
+            className="opacity-0 blur-md scale-95 w-[90%] text-3xl font-bold text-primary md:text-5xl"
+            data-fade
+          >
             Beyond Learning. Beyond Content. Built for Enterprise.
           </h1>
 
-          <p className="text-secondary-text">
+          <p 
+          className="text-secondary-text"
+          data-fade
+          >
             Organizations today need more than courses—they need a partner
             who can transform complex knowledge into engaging experiences
             that educate, influence, and drive action.
           </p>
 
-          <p className="text-secondary-text">
+          <p 
+          className="text-secondary-text"
+          data-fade
+          >
             At MoreLearning, we combine learning strategy, visual
             communication, interactive technologies, and AI-powered
             experiences to help enterprises build a more knowledgeable
@@ -108,14 +135,20 @@ export default function EnterpriseEnablement() {
             and accelerate organizational performance.
           </p>
 
-          <p className="text-secondary-text">
+          <p
+            className="opacity-0 blur-md scale-95 text-secondary-text"
+            data-fade
+          >
             From executive presentations and immersive product demonstrations
             to large-scale learning programs, simulations, videos, and
             interactive digital experiences, we create solutions that make
             information easier to understand, retain, and apply.
           </p>
 
-          <p className="text-secondary-text">
+          <p
+            className="opacity-0 blur-md scale-95 text-secondary-text"
+            data-fade
+          >
             Whether you're launching a new product, training thousands of
             employees, enabling channel partners, or communicating strategic
             initiatives, our multidisciplinary team delivers everything

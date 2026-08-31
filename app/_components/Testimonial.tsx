@@ -7,12 +7,23 @@ import { gsap } from "gsap";
 
 import { testimonials } from "@/data/home.data";
 import { TestimonialTypes } from "@/types/content";
+import { useTextFadeIn } from "@/libs/text-fade";
 
 const ACCENTS = ["primary-action", "digital", "technology"] as const;
 
 export default function Testimonial() {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const tweenRef = useRef<gsap.core.Tween | null>(null);
+
+  const fadeRef = useTextFadeIn({
+    duration: 1.5,
+    y: 40,
+    scrollTrigger: true,
+    delay: 0.2,
+    stagger: { each: 0.15, from: "start" },
+    blur: 12,
+    top: "top 80%",
+  });
 
   useGSAP(() => {
     const track = trackRef.current;
@@ -34,7 +45,7 @@ export default function Testimonial() {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden bg-[color-mix(in_srgb,var(--color-primary)_4%,white)] py-20">
+    <section className="relative w-full overflow-hidden bg-[color-mix(in_srgb,var(--color-primary)_4%,white)] py-20" ref={fadeRef}>
       {/* single, quiet ambient wash — brand blue at 6% opacity, not
           a loud blob. Adds depth without competing with the cards */}
       <div
@@ -46,7 +57,7 @@ export default function Testimonial() {
         <span className="font-mono text-xs uppercase tracking-[0.3em] text-primary-action">
           Testimonials
         </span>
-        <h2 className="mt-3 font-display text-4xl font-bold text-technology sm:text-5xl">
+        <h2 className="mt-3 font-display text-4xl font-bold text-technology sm:text-5xl" data-fade>
           What Enterprise Learning Leaders Say.
         </h2>
       </div>
