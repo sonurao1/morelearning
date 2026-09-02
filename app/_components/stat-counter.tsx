@@ -1,5 +1,4 @@
-import Image from "next/image";
-// import MediaCamera from "@/assets/images/stock-images/media-camera.webp";
+"use client";
 
 import { useTextFadeIn } from "@/libs/text-fade";
 
@@ -19,7 +18,7 @@ export default function StatsCounter() {
   });
 
   return (
-    <section className=" mb-20 py-16 px-5 flex flex-col gap-14 items-center justify-center bg-secondary lg:px-8 lg:pb-0 xl:gap-20" ref={fadeRef}>
+    <section className="mb-20 py-16 px-5 flex flex-col gap-14 items-center justify-center bg-secondary lg:px-8 lg:pb-0 xl:gap-20" ref={fadeRef}>
 
 
 
@@ -29,15 +28,19 @@ export default function StatsCounter() {
           return (
             <div
               key={index}
-              className="py-8 px-5 flex flex-col items-center justify-center gap-2.5 bg-primary rounded-2xl md:gap-3.5 lg:py-0 lg:my-8 lg:border-r-2 border-black/25 lg:rounded-none last:border-r-0"
+              className="py-8 px-5 flex flex-col items-center justify-center gap-2.5 bg-primary rounded-2xl md:gap-3.5 lg:py-0 lg:my-8 lg:border-r-2 border-white/15 lg:rounded-none last:border-r-0"
             >
               {/* Animated counter component */}
               <Counter className="text-4xl md:text-5xl xl:text-[3.5rem]">
                 {stat}
               </Counter>
 
-              {/* Counter title */}
-              <h5 className="text-lg normal-case md:text-xl">{title}</h5>
+              {/* Counter title — this is a label for the number above it,
+                  not a document heading, so it shouldn't be a <h*> tag.
+                  It was <h5>, which also skipped straight from the page's
+                  one <h1> (in Hero) past h2/h3/h4 — a broken heading
+                  hierarchy for screen readers and SEO outline crawlers. */}
+              <p className="text-lg normal-case md:text-xl">{title}</p>
 
             </div>
           );

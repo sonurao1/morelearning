@@ -1,24 +1,8 @@
 "use client";
-import { Manrope, Berkshire_Swash } from "next/font/google";
 import { Star, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 import { useTextFadeIn } from "@/libs/text-fade";
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: "500",
-});
-
-const manropeWeight = Manrope({
-  subsets: ["latin"],
-  weight: "700",
-});
-
-const felipaWeight = Berkshire_Swash({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 export default function Hero() {
   const fadeRef = useTextFadeIn({
@@ -71,14 +55,14 @@ export default function Hero() {
         {/* Heading */}
         <h1
           data-fade
-          className={`${manropeWeight.className} opacity-0 blur-md scale-95 mx-auto w-full text-[clamp(2rem,4vw,5rem)] leading-[1.1] text-white`}
+          className="opacity-0 blur-md scale-95 mx-auto w-full text-[clamp(2rem,4vw,5rem)] leading-[1.1] text-white"
         >
           Transform Enterprise <br />
           Knowledge Into{" "}
           <span className="relative inline-block">
             <span
               className={`
-                ${felipaWeight.className}
+               
                 bg-gradient-to-r from-primary-action to-digital
                 bg-clip-text text-transparent
               `}
@@ -95,7 +79,7 @@ export default function Hero() {
         {/* Paragraph */}
         <p
           data-fade
-          className={`${manrope.className} opacity-0 blur-md scale-95 text-white/60 sm:text-lg md:text-[1.375rem] xl:text-xl`}
+          className={` opacity-0 blur-md scale-95 text-white/60 sm:text-lg md:text-[1.375rem] xl:text-xl`}
         >
           MoreLearning helps global enterprises enable employees, customers,
           <br className="hidden md:block" />

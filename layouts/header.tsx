@@ -1,6 +1,8 @@
 "use client"
 import { ChevronDown, Menu, X } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { useGSAP } from "@gsap/react"
+import { gsap } from "gsap"
 
 //Data & Hooks
 import { navbarData } from "@/data/layout.data"
@@ -16,53 +18,79 @@ const { isActive } = useActiveLink();
 const [isOpen, setIsOpen] = useState(false);
 const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
 
-//Refs for scroll tracking, header element and the accent line under it
+// Scroll state drives the header's look/position — replaces the old
+// approach of mutating classList directly, which had a real bug: the
+// "at top" branch never removed the "backdrop-blur-lg" class added while
+// scrolling up, so after any scroll-up the header stayed glassy even back
+// at the very top instead of going fully transparent as intended. Deriving
+// the classes fresh from one piece of state each render fixes that —
+// there's nothing left over to forget to clean up.
+type HeaderScrollState = "top" | "visible" | "hidden";
+const [scrollState, setScrollState] = useState<HeaderScrollState>("top");
 const lastScrollTop = useRef(0);
 const headerRef = useRef<HTMLElement>(null);
-const lineRef = useRef<HTMLDivElement>(null);
+const navListRef = useRef<HTMLUListElement>(null);
 
-//Handle header visibility based on scroll direction — background stays fully
-//transparent at every scroll position, only a thin accent hairline appears
-//once scrolled, for a bit of separation without ever filling with color.
   useEffect(() => {
     const handleScroll = () => {
-      if (headerRef.current) {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (scrollTop <= 25) {
-          // Always show at the very top
-          headerRef.current.classList.add("top-0", "md:top-0");
-          headerRef.current.classList.remove("-top-20", "md:-top-25");
-          lineRef.current?.classList.remove("opacity-100");
-          lineRef.current?.classList.add("opacity-0");
-        } else if (scrollTop < lastScrollTop.current) {
-          // Scrolling up — show, still transparent
-          headerRef.current.classList.remove("-top-20", "md:-top-25");
-          headerRef.current.classList.add("top-0", "md:top-0", "backdrop-blur-lg");
-          lineRef.current?.classList.remove("opacity-0");
-          lineRef.current?.classList.add("opacity-100");
-        } else {
-          // Scrolling down — hide, and close the mobile menu so it doesn't linger off-screen
-          headerRef.current.classList.remove("top-0", "md:top-0");
-          headerRef.current.classList.add("-top-20", "md:-top-25");
-          setIsOpen(false);
-        }
-
-        lastScrollTop.current = scrollTop;
+      if (scrollTop <= 25) {
+        setScrollState("top");
+      } else if (scrollTop < lastScrollTop.current) {
+        // Scrolling up — show, glassy
+        setScrollState("visible");
+      } else {
+        // Scrolling down — hide, and close the mobile menu so it doesn't linger off-screen
+        setScrollState("hidden");
+        setIsOpen(false);
       }
+
+      lastScrollTop.current = scrollTop;
     };
 
-    handleScroll()
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => { window.removeEventListener("scroll", handleScroll) };
   }, []);
+
+  // Entrance animation — header drops in from above on first load, then
+  // the top-level nav items fade/stagger in right after. Small touch, but
+  // it's the first thing a visitor sees, so it's worth not having it just
+  // snap into place.
+  useGSAP(() => {
+    if (!headerRef.current) return;
+
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    tl.fromTo(
+      headerRef.current,
+      { y: -40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7 }
+    );
+
+    if (navListRef.current) {
+      tl.fromTo(
+        navListRef.current.children,
+        { y: -12, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.06 },
+        "-=0.35"
+      );
+    }
+  }, { scope: headerRef });
+
+  const isHeaderGlassy = scrollState === "visible";
+  const isHeaderHidden = scrollState === "hidden";
 
   return (
     <>
     {/* Navbar */}
     <header
     ref = {headerRef}
-    className="w-full h-20 px-5 fixed z-50 flex items-center justify-center transition-all duration-500 md:h-25 lg:px-8"
+    className={`w-full h-20 px-5 fixed z-50 flex items-center justify-center transition-all duration-500 md:h-25 lg:px-8
+      ${isHeaderHidden ? "-top-20 md:-top-25" : "top-0 md:top-0"}
+      ${isHeaderGlassy ? "backdrop-blur-lg bg-primary/40 shadow-lg shadow-black/20" : ""}
+    `}
     >
       <nav className="container h-full flex items-center justify-between" >
         {/* Site Logo */}
@@ -71,7 +99,7 @@ const lineRef = useRef<HTMLDivElement>(null);
         </Link>
 
         {/* Menu for screen > 1024px */}
-        <ul className="hidden items-center gap-8 capitalize font-medium lg:flex xl:gap-10">
+        <ul ref={navListRef} className="hidden items-center gap-8 capitalize font-medium lg:flex xl:gap-10">
          {navbarData.map(({url, text, items}) => {
 
             // Dropdown Menu — its own accent (technology teal) so it reads as a distinct control
@@ -95,13 +123,16 @@ const lineRef = useRef<HTMLDivElement>(null);
                             items.map(({url, text}, idx) => {
                               return  (
                                 <li key={url}>
-                                  <a
+                                  {/* Was a raw <a> — inconsistent with every other
+                                      internal nav link on this page, which uses
+                                      next/link for client-side navigation + prefetch */}
+                                  <Link
                                     href={url}
                                     className={`border block py-3 px-4 rounded-lg text-white/65 transition-colors duration-200 hover:bg-gradient-to-r hover:from-primary-action/15 hover:to-digital/15 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-action/70
                                         ${isActive(url) ? "bg-digital/15 text-white" : "bg-transparent"}`}
                                   >
                                     {text}
-                                  </a>
+                                  </Link>
                                 </li>
                               )
                             })
@@ -155,10 +186,11 @@ const lineRef = useRef<HTMLDivElement>(null);
         </div>
       </nav>
 
-      {/* Gradient hairline that fades in once the header goes glassy on scroll */}
+      {/* Gradient hairline that fades in once the header goes glassy on scroll —
+          now driven by the same `isHeaderGlassy` state as the header itself,
+          instead of a separate ref that could fall out of sync with it. */}
       <div
-        ref={lineRef}
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-digital/50 to-transparent opacity-0 transition-opacity duration-500 motion-reduce:transition-none"
+        className={`pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-digital/50 to-transparent transition-opacity duration-500 motion-reduce:transition-none ${isHeaderGlassy ? "opacity-100" : "opacity-0"}`}
       />
     </header>
 
@@ -204,14 +236,16 @@ const lineRef = useRef<HTMLDivElement>(null);
                   <ul className="flex flex-col gap-1 py-1 pl-4">
                     {items.map(({ url, text }) => (
                       <li key={url}>
-                        <a
+                        {/* Same consistency fix as the desktop dropdown — use
+                            next/link instead of a raw <a> for internal routes */}
+                        <Link
                           href={url}
                           onClick={() => setIsOpen(false)}
                           className={`block rounded-lg px-2 py-2.5 text-white/65 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-action/70
                             ${isActive(url) ? "text-white" : ""}`}
                         >
                           {text}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>

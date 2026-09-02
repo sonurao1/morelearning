@@ -29,23 +29,23 @@ export const navbarData = [
                 text: "Rapid elearning"
             },
             {
-                url: "/serives/mobile-elearning",
+                url: "/services/mobile-elearning",
                 text: "Mobile elearning"
             },
             {
-                url: "/serives/explainer-videos",
+                url: "/services/explainer-videos",
                 text: "Explainer videos"
             },
             {
-                url: "/serives/simulation-and-game-based-learning",
+                url: "/services/simulation-and-game-based-learning",
                 text: "Simulation and Game based learning"
             },
             {
                 url: "/services/translation-and-localization",
-                text: "Transation and Localization"
+                text: "Translation and Localization"
             },
             {
-                url: "/services/classroom-and-fase-to-face-learning-to-elearning",
+                url: "/services/classroom-and-face-to-face-learning-to-elearning",
                 text: "Classroom and Face to Face elearning"
             },
             {
@@ -58,7 +58,7 @@ export const navbarData = [
             },
             {
                 url: "/services/ar-vr-and-360-learning-experience",
-                text: "Flash to HTML5 conversion"
+                text: "AR, VR & 360° Learning Experience"
             },
             {
                 url: "/services/elarning-and-training-consultancy",
@@ -86,6 +86,12 @@ export const navbarData = [
     
 ]
 
+// NOTE: `socialMedia` and `services` below are not currently consumed by
+// layouts/footer.tsx (it renders its own inline placeholder social icons
+// and capability list instead) — `contact` IS wired up now (see footer.tsx).
+// `socialMedia.url` values below point to MoreStudios accounts (a different
+// client's project this data was copied from) — replace with MoreLearning's
+// real social URLs before wiring this array up to the live footer.
 export const footer = {
     socialMedia: [
     {
@@ -117,30 +123,30 @@ export const footer = {
    services: [
             {
                 url: "/services/customer-elearning-development",
-                text: "Custom elearning devlopment"
+                text: "Custom elearning development"
             },
             {
                 url: "/services/rapid-elearning",
                 text: "Rapid elearning"
             },
             {
-                url: "/serives/mobile-elearning",
+                url: "/services/mobile-elearning",
                 text: "Mobile elearning"
             },
             {
-                url: "/serives/explainer-videos",
+                url: "/services/explainer-videos",
                 text: "Explainer videos"
             },
             {
-                url: "/serives/simulation-and-game-based-learning",
+                url: "/services/simulation-and-game-based-learning",
                 text: "Simulation and Game based learning"
             },
             {
                 url: "/services/translation-and-localization",
-                text: "Transation and Localization"
+                text: "Translation and Localization"
             },
             {
-                url: "/services/classroom-and-fase-to-face-learning-to-elearning",
+                url: "/services/classroom-and-face-to-face-learning-to-elearning",
                 text: "Classroom and Face to Face training to elearning"
             },
             {
@@ -153,7 +159,7 @@ export const footer = {
             },
             {
                 url: "/services/ar-vr-and-360-learning-experience",
-                text: "Flash to HTML5 conversion"
+                text: "AR, VR & 360° Learning Experience"
             },
             {
                 url: "/services/elarning-and-training-consultancy",

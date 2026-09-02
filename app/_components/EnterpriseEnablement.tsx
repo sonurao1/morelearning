@@ -63,10 +63,15 @@ export default function EnterpriseEnablement() {
   });
 
   return (
-    <section className="w-full bg-white px-4 py-16 md:py-24" >
+    <section className="relative w-full overflow-hidden bg-white px-4 py-16 md:py-24" >
+      {/* Ambient glow — same treatment as the dark sections, kept subtle
+          for a white background */}
+      <div className="pointer-events-none absolute -top-40 -right-40 h-[420px] w-[420px] rounded-full bg-technology/[0.07] blur-[120px]" />
+      <div className="pointer-events-none absolute -bottom-40 -left-40 h-[420px] w-[420px] rounded-full bg-primary-action/[0.07] blur-[120px]" />
+
       <div
         ref={fadeRef}
-        className="container mx-auto grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20"
+        className="container relative mx-auto grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20"
       >
         {/* Image */}
         
@@ -94,26 +99,26 @@ export default function EnterpriseEnablement() {
         </div>
              {/* little Notes on image bottom */}
           <div className="w-55 bg-white text-secondary-text absolute -bottom-5 -right-5 hidden  md:flex flex-col p-4 rounded-2xl shadow-2xl shadow-digital/50  " ref={littleNotesRef}>
-            <h1 className="text-primary-action font-bold text-2xl">13+</h1>
+            <p className="text-primary-action font-bold text-2xl">13+</p>
             <p className="text-[14px]">Years partnering with global enterprises</p>
           </div>
         </div>
 
         {/* Content */}
         <div className="flex h-full flex-col gap-6" >
-          <h2
+          <p
             className="opacity-0 blur-md scale-95 text-[13px] font-bold text-primary-action md:text-xl"
             data-fade
           >
             Your Enterprise Enablement Partner
-          </h2>
+          </p>
 
-          <h1
+          <h2
             className="opacity-0 blur-md scale-95 w-[90%] text-3xl font-bold text-primary md:text-5xl"
             data-fade
           >
             Beyond Learning. Beyond Content. Built for Enterprise.
-          </h1>
+          </h2>
 
           <p 
           className="text-secondary-text"

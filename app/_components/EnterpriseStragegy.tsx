@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image"
 import { CircleCheck } from "lucide-react"
 import { useTextFadeIn } from "@/libs/text-fade"
@@ -47,9 +49,9 @@ export default function EnterpriseStrategy() {
             <span className="text-sm font-semibold uppercase tracking-wide text-primary-action">
               Built for Enterprise Scale
             </span>
-            <h1 className="max-w-xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl"  data-fade >
+            <h2 className="max-w-xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl"  data-fade >
               Enterprise-Ready, From Strategy to Delivery.
-            </h1>
+            </h2>
             <p className="max-w-md text-base text-white/80 sm:text-lg"  data-fade >
               Every engagement is backed by a multidisciplinary team and
               workflows built to move at the pace global organizations need.

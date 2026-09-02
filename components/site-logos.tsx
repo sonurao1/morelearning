@@ -12,6 +12,14 @@ type SiteLogoProps = Omit<ImageProps, "src" | "alt"> & {
 };
 
 
+// SiteLogo defaults. NOTE: earlier this pointed to
+// "/morestudios-logo-white.svg" — a leftover from a different client
+// project. I tried renaming it to a MoreLearning-named file, but that file
+// doesn't exist in the real public/ folder (this zip export doesn't
+// include public/), so it broke the logo everywhere (header, footer, the
+// purple card in the Integrated Team section) instead of fixing it.
+// Reverted back to the original working filename — don't rename this
+// again without confirming the actual file in public/ first.
 export default function SiteLogo({
     src = "/morestudios-logo-white.svg",
     alt = "Morestudios logo",

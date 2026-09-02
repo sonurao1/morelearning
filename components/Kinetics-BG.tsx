@@ -322,10 +322,27 @@ export default function KineticGrid({
     container.addEventListener("mousemove", onMouseMove);
     container.addEventListener("mouseleave", onMouseLeave);
     container.addEventListener("click", onClick);
-    rafRef.current = requestAnimationFrame(animate);
+
+    // Perf: this canvas redraws every frame via requestAnimationFrame, which
+    // keeps burning CPU/battery even while the section is scrolled off
+    // screen — a real cost on mobile. Pause the rAF loop when the section
+    // isn't visible and resume it when it scrolls back into view.
+    const intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (!rafRef.current) rafRef.current = requestAnimationFrame(animate);
+        } else if (rafRef.current) {
+          cancelAnimationFrame(rafRef.current);
+          rafRef.current = 0;
+        }
+      },
+      { threshold: 0 },
+    );
+    intersectionObserver.observe(container);
 
     return () => {
       resizeObserver.disconnect();
+      intersectionObserver.disconnect();
       container.removeEventListener("mousemove", onMouseMove);
       container.removeEventListener("mouseleave", onMouseLeave);
       container.removeEventListener("click", onClick);

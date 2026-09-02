@@ -11,9 +11,9 @@ export default function CTA() {
             <Mail size={16} /> let's talk
           </p>
 
-          <h1 className="text-4xl sm:text-5xl text-center max-w-2xl leading-tight text-white">
+          <h2 className="text-4xl sm:text-5xl text-center max-w-2xl leading-tight text-white">
             Ready to Transform How Your Enterprise Learns?
-          </h1>
+          </h2>
 
           <p className="max-w-xl text-center text-white/60">
             Tell us about your learning, enablement or communication challenge — our team will put together the right mix of strategy, content and technology to solve it.

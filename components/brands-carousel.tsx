@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { clientMarquee } from "@/data/home.data";
 

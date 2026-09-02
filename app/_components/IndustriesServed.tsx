@@ -86,9 +86,13 @@ export default function IndustriesServed() {
   return (
     <section
       ref={sectionRef}
-      className="px-4 sm:px-6 lg:px-8 py-16 lg:py-24 bg-white overflow-hidden"
+      className="relative px-4 sm:px-6 lg:px-8 py-16 lg:py-24 bg-white overflow-hidden"
     >
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[45%_1fr] gap-10 lg:gap-16 items-center" ref={fadeRef}>
+      {/* Ambient glow — matches the treatment used across the rest of the page */}
+      <div className="pointer-events-none absolute -top-40 -left-40 h-[420px] w-[420px] rounded-full bg-digital/[0.07] blur-[120px]" />
+      <div className="pointer-events-none absolute -bottom-40 -right-40 h-[420px] w-[420px] rounded-full bg-technology/[0.07] blur-[120px]" />
+
+      <div className="container relative mx-auto grid grid-cols-1 lg:grid-cols-[45%_1fr] gap-10 lg:gap-16 items-center" ref={fadeRef}>
         {/* Image */}
         <div className="relative industry-reveal">
           <div className="relative aspect-[4/5] w-full rounded-3xl overflow-hidden">
@@ -176,7 +180,7 @@ export default function IndustriesServed() {
                       className={`w-full text-left p-4 border rounded-2xl flex items-start gap-3 transition-colors duration-300 ${
                         isActive
                           ? "bg-primary-action/5 border-primary-action shadow-sm "
-                          : "border-border hover:bg-primary-action/5"
+                          : "border-primary/15 hover:bg-primary-action/5"
                       }`}
                     >
                       <div

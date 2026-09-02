@@ -57,7 +57,7 @@ export default function Testimonial() {
         <span className="font-mono text-xs uppercase tracking-[0.3em] text-primary-action">
           Testimonials
         </span>
-        <h2 className="mt-3 font-display text-4xl font-bold text-technology sm:text-5xl" data-fade>
+        <h2 className="mt-3 text-4xl font-bold text-technology sm:text-5xl" data-fade>
           What Enterprise Learning Leaders Say.
         </h2>
       </div>

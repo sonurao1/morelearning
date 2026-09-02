@@ -1,3 +1,5 @@
+"use client";
+
 import MovingBrands from "@/components/brands-carousel";
 import { useTextFadeIn } from "@/libs/text-fade"
 
@@ -27,7 +29,7 @@ export default function TrustedBrands() {
       <div className="container relative mx-auto flex flex-col items-center gap-10 px-4 md:gap-14" ref={fadeRef}> 
         {/* heading */}
         <div className="flex flex-col items-center gap-4">
-          <h2 className="max-w-3xl text-balance text-center font-display text-2xl font-medium tracking-tight text-white sm:text-3xl md:text-4xl" data-fade>
+          <h2 className="max-w-3xl text-balance text-center text-2xl font-medium tracking-tight text-white sm:text-3xl md:text-4xl" data-fade>
             Trusted by Leading Enterprises Worldwide
           </h2>
           {/* gradient rule — spans the full brand palette in one small accent */}
