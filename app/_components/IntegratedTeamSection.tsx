@@ -52,7 +52,7 @@ export default function IntegratedTeamSection() {
       <div className="pointer-events-none absolute -bottom-40 -right-40 h-[420px] w-[420px] rounded-full bg-digital/[0.08] blur-[120px]" />
 
       {/* Content Container */}
-      <div className="container h-[90%] flex flex-col gap-6 py-6 border-10 relative">
+      <div className="container h-[90%] flex flex-col gap-6 py-6 relative">
         
         {/* Content 1 */}
         <div
@@ -169,9 +169,9 @@ export default function IntegratedTeamSection() {
                 <Icon
                   color="var(--color-digital)"
                   className="drop-shadow-lg drop-shadow-digital/50 w-[16px]"
-                  strokeWidth={0.875}
+                  strokeWidth={0.875}    
                 />
-                {label}
+                {label}  
               </li>
             ))}
           </ul>

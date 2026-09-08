@@ -75,3 +75,23 @@ body {
   }
 }
 
+/* Ambient drift for the Hero gradient fallback (see hero.tsx). Transform-only
+   so it's handled entirely on the compositor thread — no layout, no paint,
+   effectively free — unlike animating background-position, which repaints
+   every frame. The element is pre-scaled 115% in hero.tsx so this translate
+   never reveals an edge. */
+@keyframes hero-gradient-drift {
+  0%, 100% { transform: scale(1.15) translate(-2%, -2%); }
+  50% { transform: scale(1.15) translate(2%, 2%); }
+}
+
+.hero-gradient-drift {
+  animation: hero-gradient-drift 26s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient-drift {
+    animation: none;
+  }
+}
+

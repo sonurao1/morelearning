@@ -1,8 +1,8 @@
 "use client";
 import { Star, ArrowRight } from "lucide-react";
-import Image from "next/image";
 
 import { useTextFadeIn } from "@/libs/text-fade";
+import { ShaderBackground, SHADER_FALLBACK_GRADIENT } from "@/components/ui/HeroBackground";
 
 export default function Hero() {
   const fadeRef = useTextFadeIn({
@@ -15,18 +15,26 @@ export default function Hero() {
 
   return (
     <section className="relative flex min-h-dvh h-screen items-center justify-center overflow-hidden px-5 py-16 lg:px-8">
-      {/* Background */}
-      <Image
-        src="/images/HeroBG1.png"
-        alt="MoreLearning enterprise background"
-        fill
-        priority
-        sizes="100vw"
-        className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
+      {/* Static gradient — plain CSS, rendered on the server as part of the
+          page's own HTML. This is what's actually visible the instant the
+          page paints (no JS, no WebGL, no wait), and on mobile / low-power
+          devices (see shouldUseHeavyBackground in HeroBackground.tsx) it's
+          the ONLY background — the WebGL canvas below never even mounts
+          there. The slow drift is transform-only CSS (near-zero cost) so
+          it still feels alive even with zero JS involved. On capable
+          desktops the animated shader canvas fades in on top of this once
+          its first frame is ready. */}
+      <div
+        className="hero-gradient-drift absolute inset-0 -z-20"
+        style={{ background: SHADER_FALLBACK_GRADIENT }}
       />
 
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/20 via-transparent to-primary/70" />
+      {/* Background — animated WebGL shader, layered above the static
+          gradient above and fading in on top of it once ready. */}
+      <ShaderBackground className="absolute inset-0 -z-10" />
+
+      {/* Dark gradient overlay — kept for text legibility over the shader */}
+      <div className="absolute inset-0 -z-10 bg-linear-to-b from-primary/30 via-primary/10 to-primary/80" />
 
       {/* Ambient glow */}
       <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
@@ -63,13 +71,13 @@ export default function Hero() {
             <span
               className={`
                
-                bg-gradient-to-r from-primary-action to-digital
+                bg-linear-to-r from-primary-action to-digital
                 bg-clip-text text-transparent
               `}
             >
               Experiences
             </span>
-            <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-gradient-to-r from-primary-action to-digital" />
+            <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-linear-to-r from-primary-action to-digital" />
           </span>
           <br />
           People Understand, <br />
@@ -98,7 +106,7 @@ export default function Hero() {
             href="#"
             className="
               opacity-0 blur-md scale-95 group relative overflow-hidden flex w-fit items-center gap-2 rounded-xl
-              bg-gradient-to-r from-primary-action to-digital
+              bg-linear-to-r from-primary-action to-digital
               px-6 py-4 text-sm font-medium text-white
               shadow-lg shadow-digital/20
               transition-all duration-300
@@ -111,7 +119,7 @@ export default function Hero() {
               size={20}
               className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
             />
-            <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+            <span className="pointer-events-none absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
           </a>
 
           {/* Button 2 */}
